@@ -2,6 +2,11 @@
 LoRa tracker to estimate the location of any client that connects to one or more gateways
 # Proyecto individual de DRA
 
+> Este año se me está haciendo imposible. 
+> Paco.
+
+La página va a estar alojada en: 
+[TrackerLoRa](https://trackerlora.lopezcarrillo.com)
 
 ## 1. Diagrama y diseño del proyecto
 

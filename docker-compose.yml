@@ -4,6 +4,7 @@ services:
   frontend:
     build: ./frontend
     image: paco/trackerlora_front
+    container_name: trackerlora_front
     ports:
       - "80:80"
     restart: unless-stopped

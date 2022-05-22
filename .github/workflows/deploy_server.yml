@@ -1,0 +1,129 @@
+name: Docker build push deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_to_build:
+        description: 'Workflow to deploy branch to server'
+        required: false
+
+  push:
+    branches:
+      - master
+
+jobs:
+  variables:
+    runs-on: ubuntu-latest
+    outputs:
+      output_profile: ${{ steps.mvn.outputs.mvn_profile }}
+      output_image_name: trackerlora:${{ steps.mvn.outputs.build_profile }}_${{ steps.buildnumber.outputs.build_number }}
+      output_host_port: ${{ steps.mvn.outputs.port }}
+      output_compose_project: ${{ steps.mvn.outputs.compose_project }}
+      output_branch_to_build: ${{ steps.mvn.outputs.branch_to_build }}
+      output_tag_logger: trackerlora.${{ steps.mvn.outputs.build_profile }}
+
+    steps:
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v3
+        with:
+          token: ${{secrets.github_token}}
+
+      - name: Define build and deploy profile
+        id: mvn
+        run: |
+          # Automatic build (inputs.branch_to_build empty)
+          if [[ -z "${{ github.event.inputs.branch_to_build }}" ]]; then
+            branch_to_build="${{github.ref}}"
+            echo "::set-output name=branch_to_build::${branch_to_build#refs/heads/}"
+          	if [[ "${{github.base_ref}}" == "master" || "${{github.ref}}" == "refs/heads/master" ]]; then
+              build_profile="master"
+          	elif [[ "${{github.base_ref}}" == "test-actions" || "${{github.ref}}" == "refs/heads/test-actions" ]]; then
+              build_profile="release"
+          	else
+              build_profile="develop"
+            fi
+          # Manual build
+          else
+            echo "::set-output name=branch_to_build::${{ github.event.inputs.branch_to_build }}"
+            if [[ "${{ github.event.inputs.branch_to_build }}" =~ "master" ]]; then
+              build_profile="master"
+            elif [[ "${{ github.event.inputs.branch_to_build }}" =~ "release" ]]; then
+              build_profile="release"
+            else
+              build_profile="develop"
+            fi
+          fi
+          echo "::set-output name=build_profile::$build_profile"
+          # Build and deploy profiles
+          if [[ "${build_profile}" == "master" ]]; then
+            echo "::set-output name=mvn_profile::deployment"
+            echo "::set-output name=port::80"
+            echo "::set-output name=compose_project::tracker_production"
+          fi
+        shell: bash
+
+  build-test-push:
+    needs: variables
+    runs-on: ubuntu-dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: |
+          git checkout "${{ needs.variables.outputs.output_branch_to_build }}"
+         #git checkout origin/prefabs-test-build -- src/main/webapp/WEB-INF/prefabs/responsiveMenu/build
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ env.Username }}
+          password: ${{ env.Password }}
+        env:
+          Username: ${{ secrets.DOCKER_USERNAME_PCOLOC }}
+          Password: ${{ secrets.DOCKER_PASSWORD_PCOLOC }}
+
+      - name: Test
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: false
+          build-args: |
+            build_profile_name=${{ needs.variables.outputs.output_profile }}
+          outputs: target
+          target: export-test
+
+      - name: Export test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: "**/surefire-reports/TEST-*.xml"
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME_PCOLOC }}/${{ needs.variables.outputs.output_image_name }}
+          build-args: |
+            build_profile_name=${{ needs.variables.outputs.output_profile }}
+        env:
+          Username: ${{ secrets.DOCKER_USERNAME_PCOLOC }}
+          Image: trackerlora
+
+  deploy:
+   needs: [build-test-push, variables]
+   runs-on: tfg
+   steps:
+     - name: Checkout repository
+       uses: actions/checkout@v2
+
+     - name: Start containers
+       env:
+         DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME_PCOLOC }}/${{ needs.variables.outputs.output_image_name }}
+         HOST_PORT: ${{ needs.variables.outputs.output_host_port }}
+         LOGGER_TAG: ${{ needs.variables.outputs.output_tag_logger }}
+       run: |
+         echo "${{ secrets.DOCKER_PASSWORD_PCOLOC }}" | docker login -u ${{ secrets.DOCKER_USERNAME_PCOLOC }} --password-stdin
+         docker-compose -f "docker-compose.yml" -p ${{ needs.variables.outputs.output_compose_project }} down --rmi all
+         docker-compose -f "docker-compose.yml" -p ${{ needs.variables.outputs.output_compose_project }} up -d

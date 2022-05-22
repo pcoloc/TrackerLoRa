@@ -55,7 +55,6 @@ jobs:
           path: frontend/coverage
   deploy:
     runs-on: tfg
-    if: success()
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it

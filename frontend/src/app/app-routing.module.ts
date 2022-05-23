@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 export const Approutes: Routes = [
   {
     path: '',
@@ -15,8 +15,5 @@ export const Approutes: Routes = [
       }
     ]
   },
-  {
-    path: '**',
-    redirectTo: '/starter'
-  }
+  { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];

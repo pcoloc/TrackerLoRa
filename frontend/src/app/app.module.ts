@@ -26,7 +26,6 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { GravatarDirective } from './gravatar.directive';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -44,7 +43,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     SidebarComponent,
     GravatarDirective,
-    PageNotFoundComponentComponent,
     PageNotFoundComponent,
   ],
   imports: [

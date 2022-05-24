@@ -28,7 +28,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GravatarDirective } from './gravatar.directive';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { NgApexchartsModule } from 'ng-apexcharts';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -60,7 +59,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     MatFormFieldModule,
     MatInputModule,
-    NgApexchartsModule
   ],
   providers: [
     {

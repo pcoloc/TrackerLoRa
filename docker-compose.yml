@@ -9,4 +9,6 @@ services:
     restart: unless-stopped
     networks:
       - trackerlora
-
+networks:
+    trackerlora:
+      external: true

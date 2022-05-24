@@ -3,9 +3,17 @@
   margin: 0 auto;
 }
 
+@media (min-width: 767px ) {
+  img {
+    width: 250px;
+    height: auto;
+  }
+}
+@media (max-width: 767px ) {
 img {
   width: 100px;
   height: auto;
+}
 }
 
 body {

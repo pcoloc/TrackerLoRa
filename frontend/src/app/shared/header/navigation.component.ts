@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, EventEmitter, Output, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',

@@ -11,4 +11,3 @@ services:
       - trackerlora
 networks:
     trackerlora:
-      external: true

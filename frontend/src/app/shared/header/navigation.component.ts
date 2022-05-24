@@ -1,13 +1,14 @@
 import { Component, AfterViewInit, EventEmitter, Output, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { MatFormFieldControl } from '@angular/material/form-field';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
 
 })
 export class NavigationComponent implements AfterViewInit {
-  email!: string;
+  email: string = "admin";
   @Output() toggleSidebar = new EventEmitter<void>();
 
 

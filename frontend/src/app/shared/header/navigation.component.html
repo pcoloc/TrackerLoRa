@@ -20,15 +20,15 @@
       aria-haspopup="true"
       aria-expanded="false"
     >
-    <span class="d-none d-md-block"> Create New</span>
+    <span class="d-none d-md-block" i18n> Create New</span>
     <span class="d-block d-md-none"><i class="bi bi-file-earmark-plus fs-4"></i></span>
 
     </a>
     <div class="dropdown-menu-start" ngbDropdownMenu>
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
+      <a i18n class="dropdown-item" href="#">Action</a>
+      <a i18n class="dropdown-item" href="#">Another action</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a i18n class="dropdown-item" href="#">Something else here</a>
     </div>
   </li>
 </ul>
@@ -49,18 +49,18 @@
       aria-expanded="false"
     >
     <img mat-card-avatar appGravatar alt="user" class="rounded-circle" [email]="email" width="50"/>
-      <span class="ms-2">John Deo</span>
+      <span class="ms-2">{{email || "User"}}</span>
     </a>
     <div class="dropdown-menu-right" ngbDropdownMenu>
-      <a class="dropdown-item" href="javascript:void(0)"> My Profile</a>
-      <a class="dropdown-item" href="javascript:void(0)"> My Balance</a>
-      <a class="dropdown-item" href="javascript:void(0)"> Inbox</a>
+      <a i18n class="dropdown-item" href="javascript:void(0)"> My Profile</a>
+      <a i18n class="dropdown-item" href="javascript:void(0)"> My Balance</a>
+      <a i18n class="dropdown-item" href="javascript:void(0)"> Inbox</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="javascript:void(0)"> Account Setting</a>
+      <a i18n class="dropdown-item" href="javascript:void(0)"> Account Setting</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="javascript:void(0)"> Logout</a>
+      <a i18n class="dropdown-item" href="javascript:void(0)"> Logout</a>
       <mat-form-field appearance="outline" class="email-input">
-        <mat-label>Email</mat-label>
+        <mat-label i18n>Email</mat-label>
         <input matInput [(ngModel)]="email">
       </mat-form-field>
     </div>

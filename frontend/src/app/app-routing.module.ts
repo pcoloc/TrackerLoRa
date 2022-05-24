@@ -12,6 +12,11 @@ export const Approutes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      { path: '', redirectTo: '/about', pathMatch: 'full' },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
       }
     ]
   },

@@ -3,13 +3,13 @@
   margin: 0 auto;
 }
 
-@media (min-width: 767px ) {
+@media (min-width: 992px ) {
   img {
-    width: 250px;
+    width: 100px;
     height: auto;
   }
 }
-@media (max-width: 767px ) {
+@media (max-width: 991px ) {
 img {
   width: 100px;
   height: auto;

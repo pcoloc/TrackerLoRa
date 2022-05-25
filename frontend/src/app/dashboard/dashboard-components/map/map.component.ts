@@ -1,8 +1,8 @@
 import { Component,Input,OnInit } from '@angular/core';
 import {LeafletService} from "../../../service/leaflet.service";
 
-export const DEFAULT_LAT = 48.20807;
-export const DEFAULT_LON =  16.37320;
+export const DEFAULT_LAT = 36.834224508547145;
+export const DEFAULT_LON =  -2.4592578294686978;
 export const TITULO = 'Proyecto';
 
 @Component({
@@ -74,21 +74,7 @@ export class MapComponent  implements OnInit {
 
 
 
-    this.mapService.L.Routing.control({
-      router: this.mapService.L.Routing.osrmv1({
-        serviceUrl: `https://router.project-osrm.org/route/v1/`
-      }),
-      showAlternatives: true,
-      fitSelectedRoutes: false,
-      show: false,
-      routeWhileDragging: true,
-      waypoints: [
-        this.mapService.L.latLng(this.lat, this.lon),
-        this.mapService.L.latLng(lat, lon)
-      ]
-    }).addTo(this.map);
 
-    tiles.addTo(this.map);
 
   }
 

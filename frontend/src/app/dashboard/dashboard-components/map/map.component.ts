@@ -72,7 +72,21 @@ export class MapComponent  implements OnInit {
     const mark2 = this.mapService.L.circleMarker([lat, lon]).addTo(this.map);
     mark2.addTo(this.map);
 
+    /*this.mapService.L.Routing.control({
+      router: this.mapService.L.Routing.osrmv1({
+        serviceUrl: `https://router.project-osrm.org/route/v1/`
+      }),
+      showAlternatives: true,
+      fitSelectedRoutes: false,
+      show: false,
+      routeWhileDragging: true,
+      waypoints: [
+        this.mapService.L.latLng(this.lat, this.lon),
+        this.mapService.L.latLng(lat, lon)
+      ]
+    }).addTo(this.map);*/
 
+    tiles.addTo(this.map);
 
 
 

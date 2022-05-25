@@ -9,10 +9,11 @@
 }
 
 .map-frame {
-  border: 2px solid black;
+  border: 2px solid grey;
   height: 500px;
 }
 
 #map {
   height: 100%;
+  z-index: 10;
 }

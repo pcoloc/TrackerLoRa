@@ -65,12 +65,30 @@ export class MapComponent  implements OnInit {
     const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
     marker.addTo(this.map);
 
-    const mark = this.mapService.L.circleMarker([this.lat, this.lon]).addTo(this.map);
+    const mark = this.mapService.L.circleMarker([this.lat, this.lon], 100).addTo(this.map);
     mark.bindPopup(this.titulo);
     mark.addTo(this.map);
 
     const mark2 = this.mapService.L.circleMarker([lat, lon]).addTo(this.map);
     mark2.addTo(this.map);
+
+    var latlngs = Array();
+
+//Get latlng from first marker
+latlngs.push(mark.getLatLng());
+
+//Get latlng from first marker
+latlngs.push(mark2.getLatLng());
+
+//You can just keep adding markers
+
+//From documentation http://leafletjs.com/reference.html#polyline
+// create a red polyline from an arrays of LatLng points
+var polyline = this.mapService.L.polyline(latlngs, {color: 'red'}).addTo(this.map);
+
+// zoom the map to the polyline
+this.map.fitBounds(polyline.getBounds());
+
 
     /*this.mapService.L.Routing.control({
       router: this.mapService.L.Routing.osrmv1({
@@ -87,8 +105,6 @@ export class MapComponent  implements OnInit {
     }).addTo(this.map);*/
 
     tiles.addTo(this.map);
-
-
 
   }
 

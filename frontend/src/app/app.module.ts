@@ -28,6 +28,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GravatarDirective } from './gravatar.directive';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { GatewaysComponent } from './gateways/gateways.component';
+import { ApiComponent } from './api/api.component';
+import { HealthComponent } from './health/health.component';
+import { NodesComponent } from './nodes/nodes.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -45,6 +49,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SidebarComponent,
     GravatarDirective,
     PageNotFoundComponent,
+    GatewaysComponent,
+    ApiComponent,
+    HealthComponent,
+    NodesComponent,
 
 
   ],

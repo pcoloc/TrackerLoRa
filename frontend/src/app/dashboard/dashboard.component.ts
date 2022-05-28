@@ -21,7 +21,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       { name: 'author', content: 'Paco López' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'date', content: '2022-05-28', scheme: 'YYYY-MM-DD' },
-      { name: 'og:image', content: 'http://localhost:4200/assets/images/logos/TrackerLoraTextLight.png' },
       { charset: 'UTF-8' },
     ]);
   }

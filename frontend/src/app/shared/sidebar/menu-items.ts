@@ -27,7 +27,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/API',
+    path: '/api',
     title: 'API',
     icon: 'bi bi-hdd-stack',
     class: '',

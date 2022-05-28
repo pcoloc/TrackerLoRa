@@ -34,6 +34,7 @@
     "leaflet-routing-machine": "^3.2.12",
     "md5": "^2.3.0",
     "ng-apexcharts": "^1.7.1",
+    "ngx-lottie": "^8.2.0",
     "ngx-perfect-scrollbar": "^10.1.1",
     "postcss": "^8.4.14",
     "rxjs": "~7.5.0",

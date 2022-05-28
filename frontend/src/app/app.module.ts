@@ -4,7 +4,7 @@ import {
   CommonModule, LocationStrategy,
   PathLocationStrategy
 } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
@@ -33,12 +33,17 @@ import { ApiComponent } from './api/api.component';
 import { HealthComponent } from './health/health.component';
 import { NodesComponent } from './nodes/nodes.component';
 
+import { LottieModule } from 'ngx-lottie';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 1,
   wheelPropagation: true,
   minScrollbarLength: 20
 };
+export function playerFactory() { // add this line
+  return import('lottie-web'); // add this line
+} // add this line
 
 @NgModule({
   declarations: [
@@ -54,7 +59,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HealthComponent,
     NodesComponent,
 
-
   ],
   imports: [
     CommonModule,
@@ -68,6 +72,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     MatFormFieldModule,
     MatInputModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [
     {
@@ -79,6 +84,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     }
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 
 

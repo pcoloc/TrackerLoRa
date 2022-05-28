@@ -18,8 +18,7 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-spinner',
   template: `<div class="preloader" *ngIf="isSpinnerVisible">
         <div class="spinner">
-          <div class="coffe"></div>
-        <!--  <div class="double-bounce2"></div> -->
+          <img class="coffe" src="../assets/images/spinner/coffecup.gif" />
         </div>
     </div>`,
   encapsulation: ViewEncapsulation.None

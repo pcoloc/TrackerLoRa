@@ -18,8 +18,8 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-spinner',
   template: `<div class="preloader" *ngIf="isSpinnerVisible">
         <div class="spinner">
-          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-          <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_gxwpkkha.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
+          <div class="coffe"></div>
+        <!--  <div class="double-bounce2"></div> -->
         </div>
     </div>`,
   encapsulation: ViewEncapsulation.None

@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "angular-bootstrap-md": "^13.0.0"
+    "@lottiefiles/lottie-player": "^1.5.7",
+    "angular-bootstrap-md": "^13.0.0",
+    "lottie-web": "^5.9.4",
+    "ngx-lottie": "^8.2.0"
   }
 }

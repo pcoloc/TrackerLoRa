@@ -12,8 +12,8 @@ export class AppComponent implements OnInit{
 
     private canonicalService: CanonicalService
   ) {
-    console.log("%cEspero que no estés intentando romper de alguna manera LoraTracker", "color:red; font-size:20px; font-weight:bold;");
-    console.log('%c ', 'font-size:400px; background:url(https://pics.me.me/codeit-google-until-youfinda-stackoverflow-answerwith-code-to-copy-paste-34126823.png) no-repeat;');
+    console.log("%cEspero que no estés intentando romper de alguna manera LoraTracker", "color:blue; font-size:20px; font-weight:bold;");
+    console.log('%c ', 'font-size:400px; background:url(https://www.meme-arsenal.com/memes/8ffedeb2150f66928a2e4931dca8463d.jpg); background-size:100px 200px;');
 
   }
   ngOnInit() {

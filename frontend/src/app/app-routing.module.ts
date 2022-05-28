@@ -15,25 +15,27 @@ export const Approutes: Routes = [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+        data: { title: 'Dashboard', breadcrumb: 'DASHBOARD' }
       },
        {
         path: 'about',
-        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
+        data : { title: 'About' }
       },
       {
-        path: 'gateways', pathMatch: 'full', component: GatewaysComponent
+        path: 'gateways', pathMatch: 'full', component: GatewaysComponent, data: { title: 'Gateways' }
       },
       {
-        path: 'nodes', pathMatch: 'full', component: NodesComponent
+        path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes' }
       },
       {
-        path: 'api', pathMatch: 'full', component: ApiComponent
+        path: 'api', pathMatch: 'full', component: ApiComponent, data: { title: 'API' }
       },
       {
-        path: 'status', pathMatch: 'full', component: HealthComponent
+        path: 'status', pathMatch: 'full', component: HealthComponent, data: { title: 'Status' }
       }
     ]
   },
-  { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
+  { path: '**', pathMatch: 'full', component: PageNotFoundComponent, data: { title: 'Page Not Found' } },
 ];

@@ -5,6 +5,7 @@ import { GatewaysComponent } from './gateways/gateways.component';
 import { HealthComponent } from './health/health.component';
 
 import { FullComponent } from './layouts/full/full.component';
+import { LoraComponent } from './lora/lora.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -33,6 +34,9 @@ export const Approutes: Routes = [
       },
       {
         path: 'ranking', pathMatch: 'full', component: RankingComponent, data: { title: 'Ranking' }
+      },
+      {
+        path: 'lora', pathMatch: 'full', component: LoraComponent, data: { title: 'LoRa' }
       },
       {
         path: 'api', pathMatch: 'full', component: ApiComponent, data: { title: 'API' }

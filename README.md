@@ -47,3 +47,7 @@ La página va a estar alojada en:
 * Ver dashboards, crear dashboards personalizadas... 
 
 ...
+Authentication -- 
+
+![image](https://user-images.githubusercontent.com/38069658/170887326-0bf051d2-3c4f-4184-8084-bbcbe7b724a3.png)
+

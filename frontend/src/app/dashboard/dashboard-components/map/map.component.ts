@@ -1,7 +1,7 @@
 import { Component,Input,OnInit } from '@angular/core';
 import {LeafletService} from "../../../service/leaflet.service";
 import { clients } from './client-data';
-import { relations } from './relations-data';
+import { relations } from '../../../relaciones/relations-data';
 
 export const DEFAULT_LAT = 36.834224508547145;
 export const DEFAULT_LON =  -2.4592578294686978;

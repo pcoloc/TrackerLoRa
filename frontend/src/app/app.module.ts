@@ -39,6 +39,11 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { LoraComponent } from './lora/lora.component';
 import { RelacionesComponent } from './relaciones/relaciones.component';
+import { MonitoreoDetailComponent } from './monitoreos/monitoreo-detail/monitoreo-detail.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChartComponent } from './ranking/chart/chart.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -66,6 +71,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MonitoreosComponent,
     LoraComponent,
     RelacionesComponent,
+    MonitoreoDetailComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    ChartComponent,
 
   ],
   imports: [

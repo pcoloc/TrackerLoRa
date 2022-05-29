@@ -1,1 +1,32 @@
-<p>monitoreos works!</p>
+
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+          <h4 class="card-title">IPs Monitoreadas con Shodan.io</h4>
+          <h5 class="card-subtitle text-muted">Si quieres estar alerta de una IP y de sus puertos abiertos, este es tu apartado...</h5>
+          <h6> Introduce una API y a volar.</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <!-- <app-feeds></app-feeds> -->
+    <div class="card">
+      <div class="card-body">
+          <h4 class="card-title">IPs</h4>
+          <h5 class="card-subtitle">IPs que tienes bajo control</h5>
+          <div class="feed-widget mt-4">
+              <ul class="list-unstyled feed-body m-0">
+                  <li class="feed-item d-flex align-items-center mb-3" *ngFor='let ip of ips'>
+                      <div class="feed-icon round round-sm text-white d-flex align-items-center justify-content-center rounded-circle {{ip.class}}">
+                          <i class={{ip.icon}}></i>
+                      </div>
+                      <h5 class="mb-0 fw-normal ms-3">{{ip.route}}</h5>
+                      <span class="ms-auto"> {{ip.time}}</span>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>

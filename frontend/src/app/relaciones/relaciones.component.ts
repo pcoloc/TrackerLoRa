@@ -15,6 +15,7 @@ export class RelacionesComponent implements OnInit {
  }
   ngOnInit(): void {
   }
+
   getDistancia(lat1, lon1, lat2, lon2) : number {
     var R = 6371; // Radius of the earth in km
     var dLat = this.deg2rad(lat2-lat1);  // this.deg2rad below

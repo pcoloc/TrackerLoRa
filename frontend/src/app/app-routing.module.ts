@@ -28,30 +28,30 @@ export const Approutes: Routes = [
         data : { title: 'About' }
       },
       {
-        path: 'gateways', pathMatch: 'full', component: GatewaysComponent, data: { title: 'Gateways' }
+        path: 'gateways', pathMatch: 'full', component: GatewaysComponent, data: { title: 'Gateways - TrackerLoRa' }
       },
       {
-        path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes' }
+        path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes - TrackerLoRa' }
       },
       {
-        path: 'relaciones', pathMatch: 'full', component: RelacionesComponent, data: { title: 'Relaciones' }
+        path: 'relaciones', pathMatch: 'full', component: RelacionesComponent, data: { title: 'Relaciones - TrackerLoRa' }
       },
       {
-        path: 'ranking', pathMatch: 'full', component: RankingComponent, data: { title: 'Ranking' }
+        path: 'ranking', pathMatch: 'full', component: RankingComponent, data: { title: 'Ranking - TrackerLoRa' }
       },
       {
-        path: 'lora', pathMatch: 'full', component: LoraComponent, data: { title: 'LoRa' }
+        path: 'lora', pathMatch: 'full', component: LoraComponent, data: { title: 'LoRa - TrackerLoRa' }
       },
       {
-        path: 'api', pathMatch: 'full', component: ApiComponent, data: { title: 'API' }
+        path: 'api', pathMatch: 'full', component: ApiComponent, data: { title: 'API - TrackerLoRa' }
       },
       {
-        path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, data: { title: 'Monitoreos' }
+        path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, data: { title: 'Monitoreos - TrackerLoRa' }
       },
       {
-        path: 'status', pathMatch: 'full', component: HealthComponent, data: { title: 'Status' }
+        path: 'status', pathMatch: 'full', component: HealthComponent, data: { title: 'Status - TrackerLoRa' }
       }
     ]
   },
-  { path: '**', pathMatch: 'full', component: PageNotFoundComponent, data: { title: 'Page Not Found' } },
+  { path: '**', pathMatch: 'full', component: PageNotFoundComponent, data: { title: 'Page Not Found - TrackerLoRa' } },
 ];

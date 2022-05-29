@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { relations } from '../relaciones/relations-data';
-import { TopSelling, Product } from '../gateways/table-data';
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
   styleUrls: ['./ranking.component.scss']
 })
 export class RankingComponent implements OnInit {
-  topSelling:Product[];
 
   constructor() {
-    this.topSelling=TopSelling;
 
   }
 

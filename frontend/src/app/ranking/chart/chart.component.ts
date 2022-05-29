@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartOptions } from 'chart.js';
+import {ChartConfiguration, ChartData, ChartOptions, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-chart',
@@ -12,31 +12,26 @@ export class ChartComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  chartData: ChartData<'pie'> = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-      }
-    ]
+  salesData: ChartData<'line'> = {
+    labels: ["Node1-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1", "Node2-Router1"],
+            datasets : [{
+                label: "Top distancias de las relaciones",
+                backgroundColor: [
+                    "#028ee1",
+                    "#92d7ef",
+                ],
+                data: [600, 500, 400, 300, 200, 100, 50, 30, 20, 10, 5, 3]
+            }]
   };
-
+  barChartType: ChartType = 'bar';
   chartOptions: ChartOptions = {
+    indexAxis: 'y',
     responsive: true,
     plugins: {
       title: {
         display: true,
-        text: '',
-      },
-      legend: {
-        display: false
+        text: 'Top distancia recorrida en un enlace',
       },
     },
   };
-
-  showLoader!: boolean;
-  totalPosts!: number;
-  categories: string[] = [];
-  counts: number[] = [];
-
 }

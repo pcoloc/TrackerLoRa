@@ -43,7 +43,8 @@ import { MonitoreoDetailComponent } from './monitoreos/monitoreo-detail/monitore
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ChartComponent } from './ranking/chart/chart.component';
+import { ChartModule } from './ranking/chart/chart.module';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -75,7 +76,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ChartComponent,
+
 
   ],
   imports: [
@@ -90,7 +91,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     MatFormFieldModule,
     MatInputModule,
-    TrafficModule
+    TrafficModule,
+    ChartModule,
   ],
   providers: [
     {

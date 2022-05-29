@@ -1,1 +1,11 @@
-<p>chart works!</p>
+<div class="card mt-2">
+  <div class="card-body">
+    <h4 class="card-title">Ranking</h4>
+    <canvas
+      baseChart
+      [data]="salesData"
+      [options]="chartOptions"
+      [type]="barChartType"
+    ></canvas>
+  </div>
+</div>

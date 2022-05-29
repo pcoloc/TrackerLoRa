@@ -24,7 +24,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes),
-
     TrafficModule
   ],
   declarations: [

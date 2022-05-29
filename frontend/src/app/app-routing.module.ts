@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LogarithmicScale } from 'chart.js';
 import { ApiComponent } from './api/api.component';
 import { GatewaysComponent } from './gateways/gateways.component';
 import { HealthComponent } from './health/health.component';
 
 import { FullComponent } from './layouts/full/full.component';
+import { LoginComponent } from './login/login.component';
 import { LoraComponent } from './lora/lora.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { RegisterComponent } from './register/register.component';
 import { RelacionesComponent } from './relaciones/relaciones.component';
 export const Approutes: Routes = [
   {
@@ -53,5 +56,7 @@ export const Approutes: Routes = [
       }
     ]
   },
+  { path: 'login', pathMatch: 'full', component: LoginComponent, data: { title: 'Log In - TrackerLoRa' } },
+  { path: 'register', pathMatch: 'full', component: RegisterComponent, data: { title: 'Sign In - TrackerLoRa' } },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent, data: { title: 'Page Not Found - TrackerLoRa' } },
 ];

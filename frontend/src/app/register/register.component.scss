@@ -1,0 +1,19 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../../assets/images/bg-login.jpeg")!important;
+  background-color: blue!important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.padding {
+  padding: 1em;
+}
+
+mat-form-field {
+  width: 100%;
+}

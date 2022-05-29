@@ -5,8 +5,10 @@ import { GatewaysComponent } from './gateways/gateways.component';
 import { HealthComponent } from './health/health.component';
 
 import { FullComponent } from './layouts/full/full.component';
+import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RankingComponent } from './ranking/ranking.component';
 export const Approutes: Routes = [
   {
     path: '',
@@ -30,7 +32,13 @@ export const Approutes: Routes = [
         path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes' }
       },
       {
+        path: 'ranking', pathMatch: 'full', component: RankingComponent, data: { title: 'Ranking' }
+      },
+      {
         path: 'api', pathMatch: 'full', component: ApiComponent, data: { title: 'API' }
+      },
+      {
+        path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, data: { title: 'Monitoreos' }
       },
       {
         path: 'status', pathMatch: 'full', component: HealthComponent, data: { title: 'Status' }

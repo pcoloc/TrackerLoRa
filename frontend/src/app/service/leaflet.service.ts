@@ -16,7 +16,6 @@ export class LeafletService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(platformId)) {
       this.L = require('leaflet');
-      this.Routing = require('leaflet-routing-machine');
     }
   }
 

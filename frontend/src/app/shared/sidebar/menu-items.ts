@@ -27,6 +27,30 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: '/ranking',
+    title: 'Ranking',
+    icon: 'bi bi-trophy',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/monitoreos',
+    title: 'Monitoreos',
+    icon: 'bi bi-sunglasses',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/lora',
+    title: 'LoRa',
+    icon: 'icon-lora',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
     path: '/api',
     title: 'API',
     icon: 'bi bi-hdd-stack',

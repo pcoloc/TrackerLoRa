@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Product,TopSelling,} from './table-data';
+
 
 @Component({
   selector: 'app-nodes',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NodesComponent implements OnInit {
 
-  constructor() { }
+  topSelling:Product[];
+
+  constructor() {
+    this.topSelling=TopSelling;
+ }
 
   ngOnInit(): void {
   }

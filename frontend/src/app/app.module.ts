@@ -26,12 +26,18 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GravatarDirective } from './gravatar.directive';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { GatewaysComponent } from './gateways/gateways.component';
 import { ApiComponent } from './api/api.component';
 import { HealthComponent } from './health/health.component';
 import { NodesComponent } from './nodes/nodes.component';
+import { GatewayDetailComponent } from './gateways/gateway-detail/gateway-detail.component';
+import { NodeDetailComponent } from './nodes/node-detail/node-detail.component';
+import { TrafficModule } from './traffic/traffic.module';
+import { RankingComponent } from './ranking/ranking.component';
+import { MonitoreosComponent } from './monitoreos/monitoreos.component';
+import { LoraComponent } from './lora/lora.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -53,7 +59,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ApiComponent,
     HealthComponent,
     NodesComponent,
-
+    GatewayDetailComponent,
+    NodeDetailComponent,
+    RankingComponent,
+    MonitoreosComponent,
+    LoraComponent,
 
   ],
   imports: [
@@ -68,6 +78,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     MatFormFieldModule,
     MatInputModule,
+    TrafficModule
   ],
   providers: [
     {

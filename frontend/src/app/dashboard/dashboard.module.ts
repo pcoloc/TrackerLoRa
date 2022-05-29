@@ -2,11 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
-import { NgApexchartsModule } from "ng-apexcharts";
 import { DashboardComponent } from "./dashboard.component";
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { MapComponent } from './dashboard-components/map/map.component';
-import { TrafficComponent } from './dashboard-components/traffic/traffic.component';
+import { TrafficModule } from '../traffic/traffic.module';
 
 const routes: Routes = [
   {
@@ -25,13 +24,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes),
-    NgApexchartsModule,
+
+    TrafficModule
   ],
   declarations: [
     DashboardComponent,
     TopCardsComponent,
     MapComponent,
-    TrafficComponent
   ],
 })
 export class DashboardModule {}

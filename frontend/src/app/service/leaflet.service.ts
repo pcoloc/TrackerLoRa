@@ -11,7 +11,6 @@ declare var require: any
 export class LeafletService {
 
   public L:any = null;
-  public Routing:any = null
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(platformId)) {

@@ -1,5 +1,3 @@
-import { RouteConfigLoadEnd } from "@angular/router"
-
 export interface topcard {
     bgcolor: string,
     icon: string,

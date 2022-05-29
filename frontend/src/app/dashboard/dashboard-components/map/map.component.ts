@@ -1,5 +1,8 @@
 import { Component,Input,OnInit } from '@angular/core';
 import {LeafletService} from "../../../service/leaflet.service";
+import { nodes } from './node-data';
+import { clients } from './client-data';
+import { relations } from './relations-data';
 
 export const DEFAULT_LAT = 36.834224508547145;
 export const DEFAULT_LON =  -2.4592578294686978;
@@ -11,6 +14,7 @@ export const TITULO = 'Proyecto';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent  implements OnInit {
+  //este es el mapa que se muestra en la vista
   private map:any;
   @Input() lat: number = DEFAULT_LAT;
   @Input() lon: number = DEFAULT_LON;
@@ -31,7 +35,7 @@ export class MapComponent  implements OnInit {
 
 
   private initMap(): void {
-    var iconRetinaUrl = 'assets/marker-icon-2x.png';
+    var iconRetinaUrl = 'assets/marker-router-icon-2x.png';
     var iconUrl = 'assets/marker-icon.png';
     var shadowUrl = 'assets/marker-shadow.png';
     var iconDefault: any;
@@ -55,29 +59,38 @@ export class MapComponent  implements OnInit {
 
     const tiles = this.mapService.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="https://1938.com.es">Web Inteligencia Artificial</a>'
+      attribution: 'miau'
     });
-    //const marker = L.marker([this.lat, this.lon]);
-    //marker.addTo(this.map);
+
+    for( let client of clients){
+      let service = this.mapService.L;
+      let marker = client.router ? service.marker([client.latitude, client.longitude]) : service.circleMarker([client.latitude, client.longitude]);
+      marker.bindPopup(client.title);
+      marker.addTo(this.map);
+    }
+    for (let relation of relations){
+      let line = this.mapService.L.polyline([[relation.latitude_emisor, relation.longitude_emisor], [relation.latitude_emisor, relation.longitude_receptor]], {color: relation.color});
+      line.addTo(this.map);
+    }
 
     const lon = this.lon + 0.009;
     const lat = this.lat + 0.009;
-    const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
-    marker.addTo(this.map);
+    // const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
+    // marker.addTo(this.map);
 
-    const mark = this.mapService.L.circleMarker([this.lat, this.lon], 100).addTo(this.map);
-    mark.bindPopup(this.titulo);
-    mark.addTo(this.map);
+     const mark = this.mapService.L.circleMarker([this.lat, this.lon], 100).addTo(this.map);
+    // mark.bindPopup(this.titulo);
+    // mark.addTo(this.map);
 
     const mark2 = this.mapService.L.circleMarker([lat, lon]).addTo(this.map);
-    mark2.addTo(this.map);
+     mark2.addTo(this.map);
 
-    var latlngs = Array();
+     var latlngs = Array();
 
-//Get latlng from first marker
+// //Get latlng from first marker
 latlngs.push(mark.getLatLng());
 
-//Get latlng from first marker
+// //Get latlng from first marker
 latlngs.push(mark2.getLatLng());
 
 //You can just keep adding markers
@@ -89,23 +102,8 @@ var polyline = this.mapService.L.polyline(latlngs, {color: 'red'}).addTo(this.ma
 // zoom the map to the polyline
 this.map.fitBounds(polyline.getBounds());
 
+     tiles.addTo(this.map);
 
-    /*this.mapService.L.Routing.control({
-      router: this.mapService.L.Routing.osrmv1({
-        serviceUrl: `https://router.project-osrm.org/route/v1/`
-      }),
-      showAlternatives: true,
-      fitSelectedRoutes: false,
-      show: false,
-      routeWhileDragging: true,
-      waypoints: [
-        this.mapService.L.latLng(this.lat, this.lon),
-        this.mapService.L.latLng(lat, lon)
-      ]
-    }).addTo(this.map);*/
+   }
 
-    tiles.addTo(this.map);
-
-  }
-
-}
+ }

@@ -69,7 +69,7 @@ export class MapComponent  implements OnInit {
       marker.addTo(this.map);
     }
     for (let relation of relations){
-      let line = this.mapService.L.polyline([[relation.latitude_emisor, relation.longitude_emisor], [relation.latitude_emisor, relation.longitude_receptor]], {color: relation.color});
+      let line = this.mapService.L.polyline([[relation.latitude_emisor, relation.longitude_emisor], [relation.latitude_receptor, relation.longitude_receptor]], {color: relation.color});
       line.addTo(this.map);
     }
 

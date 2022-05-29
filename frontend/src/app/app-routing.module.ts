@@ -20,7 +20,7 @@ export const Approutes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        data: { title: 'Dashboard', breadcrumb: 'DASHBOARD' }
+        data: { title: 'Home - TrackerLoRa', breadcrumb: 'DASHBOARD' }
       },
        {
         path: 'about',

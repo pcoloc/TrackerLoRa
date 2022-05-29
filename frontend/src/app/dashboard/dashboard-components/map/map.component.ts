@@ -1,6 +1,5 @@
 import { Component,Input,OnInit } from '@angular/core';
 import {LeafletService} from "../../../service/leaflet.service";
-import { nodes } from './node-data';
 import { clients } from './client-data';
 import { relations } from './relations-data';
 
@@ -68,42 +67,23 @@ export class MapComponent  implements OnInit {
       marker.bindPopup(client.title);
       marker.addTo(this.map);
     }
+    //From documentation http://leafletjs.com/reference.html#polyline
+    // create a red polyline from an arrays of LatLng points
     for (let relation of relations){
       let line = this.mapService.L.polyline([[relation.latitude_emisor, relation.longitude_emisor], [relation.latitude_receptor, relation.longitude_receptor]], {color: relation.color});
       line.addTo(this.map);
+      // zoom the map to the polyline
+      //this.map.fitBounds(line.getBounds());
     }
+    tiles.addTo(this.map);
 
-    const lon = this.lon + 0.009;
-    const lat = this.lat + 0.009;
-    // const marker = this.mapService.L.marker([lat + 0.005, lon + 0.005]).bindPopup(this.titulo);
-    // marker.addTo(this.map);
-
-     const mark = this.mapService.L.circleMarker([this.lat, this.lon], 100).addTo(this.map);
-    // mark.bindPopup(this.titulo);
-    // mark.addTo(this.map);
-
-    const mark2 = this.mapService.L.circleMarker([lat, lon]).addTo(this.map);
-     mark2.addTo(this.map);
-
-     var latlngs = Array();
+// var latlngs = Array();
 
 // //Get latlng from first marker
-latlngs.push(mark.getLatLng());
+// latlngs.push(mark.getLatLng());
 
 // //Get latlng from first marker
-latlngs.push(mark2.getLatLng());
-
-//You can just keep adding markers
-
-//From documentation http://leafletjs.com/reference.html#polyline
-// create a red polyline from an arrays of LatLng points
-var polyline = this.mapService.L.polyline(latlngs, {color: 'red'}).addTo(this.map);
-
-// zoom the map to the polyline
-this.map.fitBounds(polyline.getBounds());
-
-     tiles.addTo(this.map);
-
+// latlngs.push(mark2.getLatLng());
    }
 
  }

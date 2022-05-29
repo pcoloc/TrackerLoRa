@@ -38,6 +38,7 @@ import { TrafficModule } from './traffic/traffic.module';
 import { RankingComponent } from './ranking/ranking.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { LoraComponent } from './lora/lora.component';
+import { RelacionesComponent } from './relaciones/relaciones.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -64,6 +65,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RankingComponent,
     MonitoreosComponent,
     LoraComponent,
+    RelacionesComponent,
 
   ],
   imports: [

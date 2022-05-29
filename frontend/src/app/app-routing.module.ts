@@ -10,6 +10,7 @@ import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { RelacionesComponent } from './relaciones/relaciones.component';
 export const Approutes: Routes = [
   {
     path: '',
@@ -31,6 +32,9 @@ export const Approutes: Routes = [
       },
       {
         path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes' }
+      },
+      {
+        path: 'relaciones', pathMatch: 'full', component: RelacionesComponent, data: { title: 'Relaciones' }
       },
       {
         path: 'ranking', pathMatch: 'full', component: RankingComponent, data: { title: 'Ranking' }

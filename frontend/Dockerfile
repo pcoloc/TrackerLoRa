@@ -13,7 +13,7 @@ RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 COPY . .
 RUN npm install
-RUN npm run build --prod --deploy-url=https://trackerlora.lopezcarrillo.com && tar -zcvf archive.tar.gz dist/prod/*
+RUN npm run build --prod --deploy-url=https://trackerlora.lopezcarrillo.com && tar -zcvf trackerlora.tar.gz dist/prod/*
 
 
 ### STAGE 2:RUN ###

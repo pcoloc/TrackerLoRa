@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage"
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "build.prod": "ng build --environment=prod && tar -zcvf archive.tar.gz dist/prod/*"
   },
   "private": true,
   "dependencies": {

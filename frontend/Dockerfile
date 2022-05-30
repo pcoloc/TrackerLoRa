@@ -18,7 +18,7 @@ RUN npm run build --prod --deploy-url=https://trackerlora.lopezcarrillo.com
 #RUN  tar -zcvf trackerlora.tar.gz /dist/frontend/
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
-FROM nginx:latest AS ngi
+FROM fholzer/nginx-brotli AS ngi
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder
 COPY --from=build /dist/src/app/dist/frontend/index.html /dist/src/app/dist/frontend/404.html

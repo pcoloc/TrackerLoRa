@@ -7,33 +7,35 @@
             <thead>
                 <tr>
                     <th class="text-dark font-medium fs-4">Router</th>
-                    <th class="text-dark font-medium fs-4">Último mensaje</th>
+                    <th class="text-dark font-medium fs-4">Ubi</th>
                     <th class="text-dark font-medium fs-4">Estado</th>
-                    <th class="text-dark font-medium fs-4">Enviados/Recibidos</th>
+                    <th class="text-dark font-medium fs-4">isPublic</th>
                     <th class="text-dark font-medium fs-4">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor='let ts of topSelling'>
+                <tr *ngFor='let cl of client'>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src={{ts.image}} alt="user" width="45" class="rounded-circle">
+                            <img src={{cl.color}} alt="user" width="45" class="rounded-circle">
                             <div class="ms-3">
-                                <h5 class="mb-0 font-medium">{{ts.uname}}</h5>
-                                <span class="text-muted">{{ts.gmail}}</span>
+                                <h5 class="mb-0 font-medium">{{cl.name}}</h5>
+                                <span class="text-muted">{{cl.email}}</span>
                             </div>
                         </div>
                     </td>
-                    <td class="fs-4">{{ts.lastTime}}</td>
+                    <td class="fs-4">{{cl.latitude}}, {{cl.longitude}}</td>
                     <td>
-                        <span class="p-2 bg-{{ts.status}} rounded-circle d-inline-block ms-3"></span>
+                        <span class="p-2 bg-{{cl.color}} rounded-circle d-inline-block ms-3"></span>
                     </td>
 
                     <td>
-                        <h5 class="mb-0 fw-normal">{{ts.receive}}</h5>
+                        <span class="p-2 bg-{{cl.color}} rounded-circle d-inline-block ms-3"></span>
                     </td>
                     <td>
-                        <button class="mb-0 fw-normal">{{ts.budget}}</button>
+                      <a routerLink="/gateways/{{cl.name}}">
+                        <span class="badge">{{cl.uuid}}</span> {{cl.color}}
+                      </a>
                     </td>
                 </tr>
             </tbody>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Product,TopSelling,} from './table-data';
 
 
 @Component({
@@ -9,10 +8,13 @@ import {Product,TopSelling,} from './table-data';
 })
 export class NodesComponent implements OnInit {
 
-  topSelling:Product[];
 
+  name = 'Angular 5';
+  displayedColumns = ['Name', 'Age']
+  dataSource = [{name:'Sara',age:17}, {name: 'John', age: 20}]
+  dataSourceEmpty = []
   constructor() {
-    this.topSelling=TopSelling;
+
  }
 
   ngOnInit(): void {

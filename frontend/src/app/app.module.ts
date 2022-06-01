@@ -46,6 +46,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChartModule } from './ranking/chart/chart.module';
 
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
+
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 1,
@@ -93,6 +97,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatInputModule,
     TrafficModule,
     ChartModule,
+    MatToolbarModule,
+    MatTableModule
   ],
   providers: [
     {

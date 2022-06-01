@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LogarithmicScale } from 'chart.js';
 import { ApiComponent } from './api/api.component';
+import { GatewayDetailComponent } from './gateways/gateway-detail/gateway-detail.component';
 import { GatewaysComponent } from './gateways/gateways.component';
 import { HealthComponent } from './health/health.component';
 
 import { FullComponent } from './layouts/full/full.component';
 import { LoginComponent } from './login/login.component';
 import { LoraComponent } from './lora/lora.component';
+import { MonitoreoDetailComponent } from './monitoreos/monitoreo-detail/monitoreo-detail.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
+import { NodeDetailComponent } from './nodes/node-detail/node-detail.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -34,7 +37,13 @@ export const Approutes: Routes = [
         path: 'gateways', pathMatch: 'full', component: GatewaysComponent, data: { title: 'Gateways - TrackerLoRa' }
       },
       {
+        path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent, data: { title: 'Gateway Details - TrackerLoRa' }
+      },
+      {
         path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes - TrackerLoRa' }
+      },
+      {
+        path: 'nodes/:name', pathMatch: 'full', component: NodeDetailComponent, data: { title: 'Node Details - TrackerLoRa' }
       },
       {
         path: 'relaciones', pathMatch: 'full', component: RelacionesComponent, data: { title: 'Relaciones - TrackerLoRa' }
@@ -50,6 +59,9 @@ export const Approutes: Routes = [
       },
       {
         path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, data: { title: 'Monitoreos - TrackerLoRa' }
+      },
+      {
+        path: 'monitoreos/:ip', pathMatch: 'full', component: MonitoreoDetailComponent, data: { title: 'Ip Detail - TrackerLoRa' }
       },
       {
         path: 'status', pathMatch: 'full', component: HealthComponent, data: { title: 'Status - TrackerLoRa' }

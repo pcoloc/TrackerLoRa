@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Product,TopSelling,} from './table-data';
-
+import { client, clients } from './client-data';
 
 @Component({
   selector: 'app-gateways',
@@ -8,10 +7,10 @@ import {Product,TopSelling,} from './table-data';
   styleUrls: ['./gateways.component.scss']
 })
 export class GatewaysComponent implements OnInit {
-  topSelling:Product[];
+  client:client[];
 
   constructor() {
-    this.topSelling=TopSelling;
+    this.client = clients;
 
     const images = document.querySelectorAll('img');
 

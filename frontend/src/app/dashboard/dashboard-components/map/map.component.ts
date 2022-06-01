@@ -35,7 +35,7 @@ export class MapComponent  implements OnInit {
 
   private initMap(): void {
     var iconRetinaUrl = 'assets/marker-router-icon-2x.png';
-    var iconUrl = 'assets/marker-icon.png';
+    var iconUrl = 'assets/marker-router-icon-2x.png';
     var shadowUrl = 'assets/marker-shadow.png';
     var iconDefault: any;
     iconDefault = this.mapService.L.icon({

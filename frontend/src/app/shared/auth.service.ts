@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'https:backend.lopezcarrillo.com';
+  endpoint: string = 'https://backend.lopezcarrillo.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}

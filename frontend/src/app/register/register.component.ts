@@ -1,25 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from './../shared/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  email!: string;
-  password!: string;
-  constructor() { }
-
-  ngOnInit(): void {
+  signupForm: FormGroup;
+  constructor(
+    public fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router
+  ) {
+    this.signupForm = this.fb.group({
+      name: [''],
+      email: [''],
+      mobile: [''],
+      password: [''],
+    });
   }
-  signin: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required ]),
-    password: new FormControl('', [Validators.required, Validators.min(3) ])
-  });
-
-  hide = true;
-  get emailInput() { return this.signin.get('email'); }
-  get passwordInput() { return this.signin.get('password'); }
-
+  ngOnInit() {}
+  registerUser() {
+    this.authService.signUp(this.signupForm.value).subscribe((res) => {
+      if (res.result) {
+        this.signupForm.reset();
+        this.router.navigate(['login']);
+      }
+    });
+  }
 }

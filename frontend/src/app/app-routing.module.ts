@@ -14,15 +14,18 @@ import { MonitoreosComponent } from './monitoreos/monitoreos.component';
 import { NodeDetailComponent } from './nodes/node-detail/node-detail.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { RegisterComponent } from './register/register.component';
 import { RelacionesComponent } from './relaciones/relaciones.component';
+import { AuthGuard } from './shared/auth.guard';
 export const Approutes: Routes = [
   {
     path: '',
+
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
@@ -34,7 +37,7 @@ export const Approutes: Routes = [
         data : { title: 'About' }
       },
       {
-        path: 'gateways', pathMatch: 'full', component: GatewaysComponent, data: { title: 'Gateways - TrackerLoRa' }
+        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  canActivate: [AuthGuard], data: { title: 'Gateways - TrackerLoRa' }
       },
       {
         path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent, data: { title: 'Gateway Details - TrackerLoRa' }
@@ -68,7 +71,8 @@ export const Approutes: Routes = [
       }
     ]
   },
-  { path: 'login', pathMatch: 'full', component: LoginComponent, data: { title: 'Log In - TrackerLoRa' } },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', pathMatch: 'full', component: LoginComponent, data: { title: 'Welcome to TrackerLoRa' } },
   { path: 'register', pathMatch: 'full', component: RegisterComponent, data: { title: 'Sign In - TrackerLoRa' } },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent, data: { title: 'Page Not Found - TrackerLoRa' } },
 ];

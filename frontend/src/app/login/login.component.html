@@ -1,26 +1,25 @@
-<div class="login">
-  <div class="col-lg-4">
-  </div>
-  <div class="col-lg-4 padding">
-    <div class="card">
-      <div class="card-body">
-          <img src="../../assets/images/logos/TrackerLoraTextLight.png" alt="Logo" class="img-fluid padding">
-          <h4 class="card-title">Log In</h4>
-          <h5 class="card-subtitle text-muted">Si es tu primera vez, regístrate</h5>
-          <h6> Introduce tu email y tu contraseña. :)</h6>
-          <form [formGroup]="login">
-            <mat-form-field appearance="outline" class="email-input">
-              <mat-label i18n>Email</mat-label>
-              <input matInput [(ngModel)]="email">
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="password-input">
-              <mat-label i18n>Password</mat-label>
-              <input matInput [(ngModel)]="password" type="password">
-            </mat-form-field>
-            </form>
-      </div>
+<div class="auth-wrapper">
+  <form class="form-signin" [formGroup]="signinForm" (ngSubmit)="loginUser()">
+    <h3 class="h3 mb-3 font-weight-normal text-center">Please sign in</h3>
+    <div class="form-group">
+      <label>Username</label>
+      <input
+        type="username"
+        class="form-control"
+        formControlName="username"
+        placeholder="Enter username"
+        required
+      />
     </div>
-  </div>
-  <div class="col-lg-4">
-  </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Sign in</button>
+  </form>
 </div>

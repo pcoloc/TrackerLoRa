@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from './../shared/auth.service';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-login',
+  selector: 'app-signin',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email!: string;
-  password!: string;
-  constructor() { }
-
-  ngOnInit(): void {
+  signinForm: FormGroup;
+  constructor(
+    public fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router
+  ) {
+    this.signinForm = this.fb.group({
+      username: [''],
+      password: [''],
+    });
   }
-  login: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required ]),
-    password: new FormControl('', [Validators.required, Validators.min(3) ])
-  });
-
-  hide = true;
-  get emailInput() { return this.login.get('email'); }
-  get passwordInput() { return this.login.get('password'); }
+  ngOnInit() {}
+  loginUser() {
+    this.authService.signIn(this.signinForm.value);
+  }
 }

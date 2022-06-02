@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
- 
+
   deploy:
     runs-on: tfg
       # Steps represent a sequence of tasks that will be executed as part of the job
@@ -24,6 +24,6 @@ jobs:
       - name: donde_estamos
         run: ls
       - name: run_docker-compose
-        run: docker-compose -f "docker-compose.yml" up -d --build
+        run: docker-compose -f "docker-compose.yml" up -d --build --no-cache
 
 

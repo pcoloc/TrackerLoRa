@@ -26,7 +26,7 @@ export class AuthService {
     return this.http
       .post<any>(`${this.endpoint}/auth/login`, user)
       .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token);
+        localStorage.setItem('token', res.token);
         this.getUserProfile(res._id).subscribe((res) => {
           this.currentUser = res;
           this.router.navigate(['dashboard/' + res.msg._id]);
@@ -34,14 +34,14 @@ export class AuthService {
       });
   }
   getToken() {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('token');
   }
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access_token');
+    let authToken = localStorage.getItem('token');
     return authToken !== null ? true : false;
   }
   doLogout() {
-    let removeToken = localStorage.removeItem('access_token');
+    let removeToken = localStorage.removeItem('token');
     if (removeToken == null) {
       this.router.navigate(['login']);
     }

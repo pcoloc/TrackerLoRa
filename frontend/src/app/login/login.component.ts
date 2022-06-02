@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     public router: Router
   ) {
     this.signinForm = this.fb.group({
-      username: [''],
+      user_name: [''],
       password: [''],
     });
   }

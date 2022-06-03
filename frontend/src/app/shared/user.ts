@@ -3,6 +3,6 @@ export class User {
   user_name!: String;
   email!: String;
   password!: String;
-  firstName!: String;
-  lastName!: String;
+  first_name!: String;
+  last_name!: String;
 }

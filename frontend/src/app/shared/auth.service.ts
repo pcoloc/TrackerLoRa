@@ -18,8 +18,15 @@ export class AuthService {
   constructor(private http: HttpClient, public router: Router) {}
   // Register
   signUp(user: User): Observable<any> {
+    var formData: any = new FormData();
+    formData.append('password', user.password);
+    formData.append('user_name', user.user_name);
+    formData.append('email', user.email);
+    formData.append('first_name', user.first_name);
+    formData.append('last_name', user.last_name);
+
     let api = `${this.endpoint}/auth/register`;
-    return this.http.post(api, user).pipe(catchError(this.handleError));
+    return this.http.post(api, formData).pipe(catchError(this.handleError));
   }
   // Login
   signIn(user: User) {

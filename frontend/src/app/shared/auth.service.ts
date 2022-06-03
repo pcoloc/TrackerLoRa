@@ -38,10 +38,10 @@ export class AuthService {
       .post<any>(`${this.endpoint}/auth/login`, formData)
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token);
-         this.getUserProfile().subscribe((res) => {
-           this.currentUser = res;
+         //this.getUserProfile().subscribe((res) => {
+         //  this.currentUser = res;
           this.router.navigate(['dashboard']);
-         });
+        // });
       });
   }
   getToken() {

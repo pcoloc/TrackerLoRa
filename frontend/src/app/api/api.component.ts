@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent implements OnInit {
-    requestURL = 'https://backend.lopezcarrillo.com/lora/api';
+    requestURL = 'https://backend.lopezcarrillo.com/lora/data';
     api: any;
   constructor(private http: HttpClient) { }
 

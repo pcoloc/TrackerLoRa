@@ -80,7 +80,8 @@ export class AuthService {
   }
 
   getApi(): Observable<any> {
-    return this.http.get(`${this.endpoint}/lora/data`, {
+    console.log(this.getToken());
+    return this.http.get(`${this.endpoint}/lora`, {
       headers: this.headers,
     }).pipe(
           map((res) => {

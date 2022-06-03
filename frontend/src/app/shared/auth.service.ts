@@ -23,8 +23,12 @@ export class AuthService {
   }
   // Login
   signIn(user: User) {
+    console.log(user);
+    var formData: any = new FormData();
+    formData.append('password', user.password);
+    formData.append('user_name', user.user_name);
     return this.http
-      .post<any>(`${this.endpoint}/auth/login`, user)
+      .post<any>(`${this.endpoint}/auth/login`, formData)
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token);
         this.getUserProfile(res._id).subscribe((res) => {

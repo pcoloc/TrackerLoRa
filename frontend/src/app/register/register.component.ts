@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   }
   ngOnInit() {}
   registerUser() {
+    console.log(this.signupForm.value);
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
       if (res.result) {
         this.signupForm.reset();

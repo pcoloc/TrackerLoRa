@@ -79,4 +79,10 @@ export class AuthService {
     }
     return throwError(msg);
   }
+
+  getApi() {
+    return this.http.get<any>(`${this.endpoint}/lora/data`, {
+      headers: this.headers,
+    });
+  }
 }

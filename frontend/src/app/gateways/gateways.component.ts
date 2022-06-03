@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class GatewaysComponent implements OnInit {
   client:client[] | undefined;
-  ttnData!: data;
+  ttnData: data | any;
   constructor(private gatewayService: gatewayService, private http: HttpClient) {
     this.client = clients;
     const images = document.querySelectorAll('img');
@@ -31,8 +31,8 @@ headers = new HttpHeaders().set('Authorization', `Bearer NNSXS.WBW26UJTNT2RETN5M
 
   ngOnInit(): void {
     //this.getData();
-      this.http.get<any>('https://eu1.cloud.thethings.network/api/v3/gs/gateways/dragino-pac/connection/stats',{headers: this.headers}).subscribe(data => {
-          this.ttnData = data.total;
+      this.http.get('https://eu1.cloud.thethings.network/api/v3/gs/gateways/dragino-pac/connection/stats',{headers: this.headers}).subscribe(data => {
+          this.ttnData = data;
       })
 
   }

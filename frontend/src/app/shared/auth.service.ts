@@ -31,10 +31,10 @@ export class AuthService {
       .post<any>(`${this.endpoint}/auth/login`, formData)
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token);
-        this.getUserProfile(res._id).subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['dashboard/' + res.msg._id]);
-        });
+        // this.getUserProfile(res._id).subscribe((res) => {
+        //   this.currentUser = res;
+        //   this.router.navigate(['dashboard/' + res.msg._id]);
+        // });
       });
   }
   getToken() {

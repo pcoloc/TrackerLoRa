@@ -57,16 +57,16 @@ export class AuthService {
       this.router.navigate(['login']);
     }
   }
-  // User profile
-  getUserProfile(): Observable<any> {
-    let api = `${this.endpoint}/user}`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-      map((res) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
-  }
+  // // User profile
+  // getUserProfile(): Observable<any> {
+  //   let api = `${this.endpoint}/user}`;
+  //   return this.http.get(api, { headers: this.headers }).pipe(
+  //     map((res) => {
+  //       return res || {};
+  //     }),
+  //     catchError(this.handleError)
+  //   );
+  // }
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';

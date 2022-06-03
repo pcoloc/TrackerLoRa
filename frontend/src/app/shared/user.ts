@@ -1,6 +1,6 @@
 export class User {
   uuid!: String;
-  username!: String;
+  user_name!: String;
   email!: String;
   password!: String;
   firstName!: String;

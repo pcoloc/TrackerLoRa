@@ -1,3 +1,10 @@
+<div class="login">
+  <div class="col-lg-4">
+  </div>
+  <div class="col-lg-4 padding">
+    <div class="card">
+      <div class="card-body">
+          <img src="../../assets/images/logos/TrackerLoraTextLight.png" alt="Logo" class="img-fluid padding">
 <div class="auth-wrapper">
   <form
     class="form-signin"
@@ -6,12 +13,32 @@
   >
     <h3 class="h3 mb-3 font-weight-normal text-center">Please sign up</h3>
     <div class="form-group">
-      <label>Name</label>
+      <label>Username</label>
       <input
         type="text"
         class="form-control"
-        formControlName="name"
-        placeholder="Enter name"
+        formControlName="user_name"
+        placeholder="Enter username"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="first_name"
+        placeholder="Enter first name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="last_name"
+        placeholder="Enter last name"
         required
       />
     </div>
@@ -38,3 +65,8 @@
     <button type="submit" class="btn btn-block btn-primary">Sign up</button>
   </form>
 </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+  </div>

@@ -58,7 +58,7 @@ export const Approutes: Routes = [
         path: 'lora', pathMatch: 'full', component: LoraComponent, data: { title: 'LoRa - TrackerLoRa' }
       },
       {
-        path: 'api', pathMatch: 'full', component: ApiComponent, data: canActivate: [AuthGuard], { title: 'API - TrackerLoRa' }
+        path: 'api', pathMatch: 'full', component: ApiComponent, canActivate: [AuthGuard], data:  { title: 'API - TrackerLoRa' }
       },
       {
         path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, data: { title: 'Monitoreos - TrackerLoRa' }

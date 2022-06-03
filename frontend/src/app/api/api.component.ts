@@ -10,15 +10,15 @@ import { Lora } from './lora-data';
 })
 export class ApiComponent implements OnInit {
     requestURL = 'https://backend.lopezcarrillo.com/lora/data';
-    api: Lora | undefined;
+    api: Lora | any;
     token = this.authService.getToken();;
     headers = new HttpHeaders().set('Authorization', 'Bearer ${this.token}');
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
     console.log(this.token);
-    this.authService.getApi().subscribe(data => { this.api = data.total; console.log(this.api); });
-
+    this.api = this.authService.getApi();
+    console.log(this.api);
   }
 
 }

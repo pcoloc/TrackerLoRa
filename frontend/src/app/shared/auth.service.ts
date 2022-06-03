@@ -54,7 +54,6 @@ export class AuthService {
   doLogout() {
     let removeToken = localStorage.removeItem('token');
     if (removeToken == null) {
-      this.router.navigate(['login']);
     }
   }
   // // User profile
@@ -80,9 +79,14 @@ export class AuthService {
     return throwError(msg);
   }
 
-  getApi() {
-    return this.http.get<any>(`${this.endpoint}/lora/data`, {
+  getApi(): Observable<any> {
+    return this.http.get(`${this.endpoint}/lora/data`, {
       headers: this.headers,
-    });
+    }).pipe(
+          map((res) => {
+            return res || {};
+          }),
+          catchError(this.handleError)
+        );
   }
 }

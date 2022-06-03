@@ -79,17 +79,10 @@ export class AuthService {
     return throwError(msg);
   }
 
-  getApi(): Observable<any> {
-    console.log(this.getToken());
-    return this.http.get(`${this.endpoint}/lora`, {
-      headers: this.headers,
-    }).pipe(
-          map((res) => {
-            console.log("res")
-            console.log(res)
-            return res || {};
-          }),
-          catchError(this.handleError)
-        );
-  }
+  // getApi(): Observable<any> {
+  //   console.log(this.getToken());
+  //   data: any;
+  //   return this.http.get(`${this.endpoint}/lora`, {
+  //     headers: this.headers,
+  //   }).subscribe((res: any) => { this.data = res };
 }

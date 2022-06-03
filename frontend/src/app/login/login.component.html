@@ -6,7 +6,7 @@
     <div class="card">
       <div class="card-body">
           <img src="../../assets/images/logos/TrackerLoraTextLight.png" alt="Logo" class="img-fluid padding">
-          <h4 class="card-title">Log In</h4>
+          <h4 class="card-title" i18n>Log In</h4>
           <div class="auth-wrapper">
   <form class="form-signin" [formGroup]="signinForm" (ngSubmit)="loginUser()">
     <div class="form-group">
@@ -20,7 +20,7 @@
       />
     </div>
     <div class="form-group">
-      <label>Password</label>
+      <label i18n>Password</label>
       <input
         type="password"
         class="form-control"
@@ -28,7 +28,15 @@
         placeholder="Password"
       />
     </div>
-    <button type="submit" class="btn btn-block btn-primary">Log in</button>
+    <!--- Column of 6 of size and arrow tag for sigin -->
+    <div class="row">
+      <div class="col-lg-6">
+        <button type="submit" class="btn btn-primary btn-block" i18n>Log In</button>
+      </div>
+      <div class="col-lg-6">
+        <a routerLink="/register" class="btn btn-primary btn-block" i18n>Register</a>
+      </div>
+    </div>
   </form>
 </div>
       </div>

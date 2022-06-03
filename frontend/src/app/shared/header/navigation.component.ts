@@ -2,6 +2,8 @@ import { Component, AfterViewInit, EventEmitter, Output, OnInit } from '@angular
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { MatFormFieldControl } from '@angular/material/form-field';
+import { User } from '../user';
+import { AuthService } from './../../shared/auth.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -14,8 +16,10 @@ export class NavigationComponent implements AfterViewInit {
 
   public config: PerfectScrollbarConfigInterface = {};
   public showSearch = false;
-
-  constructor(private modalService: NgbModal) {
+  currentUser: User | undefined;
+  constructor(private modalService: NgbModal, private authenticationService: AuthService) {
+    this.authenticationService.getUserProfile().subscribe(user => this.currentUser = user);
+    console.log(this.currentUser);
 
   }
 
@@ -113,4 +117,5 @@ export class NavigationComponent implements AfterViewInit {
   }]
 
   ngAfterViewInit() { }
+
 }

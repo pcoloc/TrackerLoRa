@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { client, clients } from './client-data';
+import { gatewayService } from './gateway.service';
+import { data } from './ttn-data';
 
 @Component({
   selector: 'app-gateways',
@@ -7,9 +9,9 @@ import { client, clients } from './client-data';
   styleUrls: ['./gateways.component.scss']
 })
 export class GatewaysComponent implements OnInit {
-  client:client[];
-
-  constructor() {
+  client:client[] | undefined;
+  ttnData!: data;
+  constructor(private gatewayService: gatewayService) {
     this.client = clients;
 
     const images = document.querySelectorAll('img');
@@ -23,14 +25,15 @@ images.forEach(img => {
     img.alt = 'default';
   });
 });
-   }
+}
 
   ngOnInit(): void {
-
+    this.getData();
   }
-
-
-
+  getData() {
+  this.gatewayService.getData().subscribe(data => this.ttnData = data);
+  }
 }
+
 
 

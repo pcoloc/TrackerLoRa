@@ -38,10 +38,10 @@ export class AuthService {
       .post<any>(`${this.endpoint}/auth/login`, formData)
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token);
-        // this.getUserProfile(res._id).subscribe((res) => {
-        //   this.currentUser = res;
-        //   this.router.navigate(['dashboard/' + res.msg._id]);
-        // });
+         this.getUserProfile().subscribe((res) => {
+           this.currentUser = res;
+          this.router.navigate(['dashboard/' + res.msg._id]);
+         });
       });
   }
   getToken() {
@@ -58,8 +58,8 @@ export class AuthService {
     }
   }
   // User profile
-  getUserProfile(id: any): Observable<any> {
-    let api = `${this.endpoint}/profile/${id}`;
+  getUserProfile(): Observable<any> {
+    let api = `${this.endpoint}/user}`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};

@@ -37,13 +37,13 @@ export const Approutes: Routes = [
         data : { title: 'About' }
       },
       {
-        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  /*canActivate: [AuthGuard],*/ data: { title: 'Gateways - TrackerLoRa' }
+        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  canActivate: [AuthGuard], data: { title: 'Gateways - TrackerLoRa' }
       },
       {
         path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent, data: { title: 'Gateway Details - TrackerLoRa' }
       },
       {
-        path: 'nodes', pathMatch: 'full', component: NodesComponent, data: { title: 'Nodes - TrackerLoRa' }
+        path: 'nodes', pathMatch: 'full', component: NodesComponent, canActivate: [AuthGuard], data: { title: 'Nodes - TrackerLoRa' }
       },
       {
         path: 'nodes/:name', pathMatch: 'full', component: NodeDetailComponent, data: { title: 'Node Details - TrackerLoRa' }
@@ -58,7 +58,7 @@ export const Approutes: Routes = [
         path: 'lora', pathMatch: 'full', component: LoraComponent, data: { title: 'LoRa - TrackerLoRa' }
       },
       {
-        path: 'api', pathMatch: 'full', component: ApiComponent, data: { title: 'API - TrackerLoRa' }
+        path: 'api', pathMatch: 'full', component: ApiComponent, data: canActivate: [AuthGuard], { title: 'API - TrackerLoRa' }
       },
       {
         path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, data: { title: 'Monitoreos - TrackerLoRa' }

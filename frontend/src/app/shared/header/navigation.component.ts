@@ -18,7 +18,7 @@ export class NavigationComponent implements AfterViewInit {
   public showSearch = false;
   currentUser: User | undefined;
   constructor(private modalService: NgbModal, private authenticationService: AuthService) {
-    this.authenticationService.getUserProfile().subscribe(user => this.currentUser = user);
+    //this.authenticationService.getUserProfile().subscribe(user => this.currentUser = user);
     console.log(this.currentUser);
 
   }

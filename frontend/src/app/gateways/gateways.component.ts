@@ -15,7 +15,6 @@ export class GatewaysComponent implements OnInit {
   ttnData!: data;
   constructor(private gatewayService: gatewayService, private http: HttpClient) {
     this.client = clients;
-
     const images = document.querySelectorAll('img');
 
 images.forEach(img => {
@@ -28,12 +27,11 @@ images.forEach(img => {
   });
 });
 }
+headers = new HttpHeaders().set('Authorization', `Bearer NNSXS.WBW26UJTNT2RETN5MQHFLAYFKREQRCD66E3T3UI.A2Z46I2DYQFIIOJDUTE3RHPWD5WBFXHE2YKT5XB3FPZNJB5NAGXQ`);
 
   ngOnInit(): void {
     //this.getData();
-      const headers =  new HttpHeaders()
-      .set( 'Authorization',`Bearer NNSXS.WBW26UJTNT2RETN5MQHFLAYFKREQRCD66E3T3UI.A2Z46I2DYQFIIOJDUTE3RHPWD5WBFXHE2YKT5XB3FPZNJB5NAGXQ`);
-      this.http.get<any>('https://eu1.cloud.thethings.network/api/v3/gs/gateways/dragino-pac/connection/stats',{headers}).subscribe(data => {
+      this.http.get<any>('https://eu1.cloud.thethings.network/api/v3/gs/gateways/dragino-pac/connection/stats',{headers: this.headers}).subscribe(data => {
           this.ttnData = data.total;
       })
 

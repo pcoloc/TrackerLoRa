@@ -14,7 +14,8 @@ export class ApiComponent implements OnInit {
 
   ngOnInit(): void {
     const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Bearer {{token}}`);
     this.http.get<any>(this.requestURL, ).subscribe(data => {
           this.api = data.total;
       })

@@ -37,7 +37,7 @@ export const Approutes: Routes = [
         data : { title: 'About' }
       },
       {
-        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  canActivate: [AuthGuard], data: { title: 'Gateways - TrackerLoRa' }
+        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  /*canActivate: [AuthGuard],*/ data: { title: 'Gateways - TrackerLoRa' }
       },
       {
         path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent, data: { title: 'Gateway Details - TrackerLoRa' }

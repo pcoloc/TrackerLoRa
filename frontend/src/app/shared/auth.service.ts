@@ -40,7 +40,7 @@ export class AuthService {
         localStorage.setItem('token', res.token);
          this.getUserProfile().subscribe((res) => {
            this.currentUser = res;
-          this.router.navigate(['dashboard/' + res.msg._id]);
+          this.router.navigate(['dashboard']);
          });
       });
   }

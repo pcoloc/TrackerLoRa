@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../shared/auth.service';
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
@@ -9,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class ApiComponent implements OnInit {
     requestURL = 'https://backend.lopezcarrillo.com/lora/data';
     api: any;
-  constructor(private http: HttpClient) { }
+    token: string | undefined;
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.http.get<any>(this.requestURL).subscribe(data => {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    this.http.get<any>(this.requestURL, ).subscribe(data => {
           this.api = data.total;
       })
       console.log(this.api);

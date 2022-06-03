@@ -32,7 +32,7 @@ images.forEach(img => {
   ngOnInit(): void {
     //this.getData();
       const headers =  new HttpHeaders()
-      .set( "Authorization","Bearer NNSXS.WBW26UJTNT2RETN5MQHFLAYFKREQRCD66E3T3UI.A2Z46I2DYQFIIOJDUTE3RHPWD5WBFXHE2YKT5XB3FPZNJB5NAGXQ");
+      .set( 'Authorization',`Bearer NNSXS.WBW26UJTNT2RETN5MQHFLAYFKREQRCD66E3T3UI.A2Z46I2DYQFIIOJDUTE3RHPWD5WBFXHE2YKT5XB3FPZNJB5NAGXQ`);
       this.http.get<any>('https://eu1.cloud.thethings.network/api/v3/gs/gateways/dragino-pac/connection/stats',{headers}).subscribe(data => {
           this.ttnData = data.total;
       })

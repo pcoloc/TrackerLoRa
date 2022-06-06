@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:8080'; // 'https://backend.lopezcarrillo.com';
+  endpoint: string =  'https://pve.lopezcarrillo.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}
@@ -39,10 +39,10 @@ export class AuthService {
       .post<any>(`${this.endpoint}/auth/login`, formData)
       .subscribe((res: any) => {
         localStorage.setItem('token', res.token);
-         //this.getUserProfile().subscribe((res) => {
-         //  this.currentUser = res;
+         this.getUserProfile().subscribe((res) => {
+         this.currentUser = res;
           this.router.navigate(['dashboard']);
-        // });
+         });
       });
   }
   getToken() {
@@ -78,6 +78,15 @@ export class AuthService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
+  }
+  getGateway(): Observable<any> {
+    let api = `${this.endpoint}/client/routers`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
   }
 
   // getApi(): Observable<any> {

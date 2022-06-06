@@ -28,46 +28,46 @@ export const Approutes: Routes = [
       { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard],
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), /* canActivate: [AuthGuard], */
         data: { title: 'Home - TrackerLoRa', breadcrumb: 'DASHBOARD' }
       },
        {
         path: 'about',
-        loadChildren: () => import('./about/about.module').then(m => m.AboutModule), canActivate: [AuthGuard],
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule), /* canActivate: [AuthGuard], */
         data : { title: 'About' }
       },
       {
-        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  canActivate: [AuthGuard], data: { title: 'Gateways - TrackerLoRa' }
+        path: 'gateways', pathMatch: 'full', component: GatewaysComponent,  /* canActivate: [AuthGuard], */ data: { title: 'Gateways - TrackerLoRa' }
       },
       {
-        path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent, canActivate: [AuthGuard], data: { title: 'Gateway Details - TrackerLoRa' }
+        path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent, /* canActivate: [AuthGuard], */ data: { title: 'Gateway Details - TrackerLoRa' }
       },
       {
-        path: 'nodes', pathMatch: 'full', component: NodesComponent, canActivate: [AuthGuard], data: { title: 'Nodes - TrackerLoRa' }
+        path: 'nodes', pathMatch: 'full', component: NodesComponent, /* canActivate: [AuthGuard], */ data: { title: 'Nodes - TrackerLoRa' }
       },
       {
-        path: 'nodes/:name', pathMatch: 'full', component: NodeDetailComponent,canActivate: [AuthGuard], data: { title: 'Node Details - TrackerLoRa' }
+        path: 'nodes/:name', pathMatch: 'full', component: NodeDetailComponent,/* canActivate: [AuthGuard], */ data: { title: 'Node Details - TrackerLoRa' }
       },
       {
-        path: 'relaciones', pathMatch: 'full', component: RelacionesComponent, canActivate: [AuthGuard], data: { title: 'Relaciones - TrackerLoRa' }
+        path: 'relaciones', pathMatch: 'full', component: RelacionesComponent, /* canActivate: [AuthGuard], */ data: { title: 'Relaciones - TrackerLoRa' }
       },
       {
-        path: 'ranking', pathMatch: 'full', component: RankingComponent, canActivate: [AuthGuard], data: { title: 'Ranking - TrackerLoRa' }
+        path: 'ranking', pathMatch: 'full', component: RankingComponent, /* canActivate: [AuthGuard], */ data: { title: 'Ranking - TrackerLoRa' }
       },
       {
-        path: 'lora', pathMatch: 'full', component: LoraComponent, canActivate: [AuthGuard], data: { title: 'LoRa - TrackerLoRa' }
+        path: 'lora', pathMatch: 'full', component: LoraComponent, /* canActivate: [AuthGuard], */ data: { title: 'LoRa - TrackerLoRa' }
       },
       {
-        path: 'api', pathMatch: 'full', component: ApiComponent, canActivate: [AuthGuard], data:  { title: 'API - TrackerLoRa' }
+        path: 'api', pathMatch: 'full', component: ApiComponent, /* canActivate: [AuthGuard], */ data:  { title: 'API - TrackerLoRa' }
       },
       {
-        path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, canActivate: [AuthGuard], data: { title: 'Monitoreos - TrackerLoRa' }
+        path: 'monitoreos', pathMatch: 'full', component: MonitoreosComponent, /* canActivate: [AuthGuard], */ data: { title: 'Monitoreos - TrackerLoRa' }
       },
       {
-        path: 'monitoreos/:ip', pathMatch: 'full', component: MonitoreoDetailComponent, canActivate: [AuthGuard], data: { title: 'Ip Detail - TrackerLoRa' }
+        path: 'monitoreos/:ip', pathMatch: 'full', component: MonitoreoDetailComponent, /* canActivate: [AuthGuard], */ data: { title: 'Ip Detail - TrackerLoRa' }
       },
       {
-        path: 'status', pathMatch: 'full', component: HealthComponent, canActivate: [AuthGuard], data: { title: 'Status - TrackerLoRa' }
+        path: 'status', pathMatch: 'full', component: HealthComponent, /* canActivate: [AuthGuard], */ data: { title: 'Status - TrackerLoRa' }
       }
     ]
   },

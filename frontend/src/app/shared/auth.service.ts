@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { UserWP } from './user';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'https://backend.lopezcarrillo.com';
+  endpoint: string = 'http://localhost:8080'; // 'https://backend.lopezcarrillo.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}
@@ -56,16 +57,16 @@ export class AuthService {
     if (removeToken == null) {
     }
   }
-  // // User profile
-  // getUserProfile(): Observable<any> {
-  //   let api = `${this.endpoint}/user}`;
-  //   return this.http.get(api, { headers: this.headers }).pipe(
-  //     map((res) => {
-  //       return res || {};
-  //     }),
-  //     catchError(this.handleError)
-  //   );
-  // }
+  // User profile
+   getUserProfile(): Observable<any> {
+     let api = `${this.endpoint}/user}`;
+     return this.http.get(api, { headers: this.headers }).pipe(
+       map((res) => {
+         return res || {};
+       }),
+       catchError(this.handleError)
+     );
+ }
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';

@@ -6,3 +6,11 @@ export class User {
   first_name!: String;
   last_name!: String;
 }
+
+export class UserWP {
+  uuid!: String;
+  user_name!: String;
+  email!: String;
+  first_name!: String;
+  last_name!: String;
+}

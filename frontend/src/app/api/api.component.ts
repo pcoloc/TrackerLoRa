@@ -13,7 +13,7 @@ export class ApiComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.api = this.authService.getApi();
+   // this.api = this.authService.getApi();
     console.log(this.api);
   }
 

@@ -44,6 +44,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChartModule } from './ranking/chart/chart.module';
+import {MatDialogModule, MatDialogRef, MatDialog} from '@angular/material/dialog';
 
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -100,7 +101,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TrafficModule,
     ChartModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [
     {
@@ -115,6 +117,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: MatDialogRef,
+      useValue: {}
     },
     Title,
   ],

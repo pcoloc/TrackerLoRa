@@ -9,6 +9,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { lora } from './Lora';
 @Injectable({
   providedIn: 'root',
 })
@@ -85,20 +86,20 @@ export class AuthService {
     }
     return throwError(msg);
   }
-  getGateway(): Observable<any> {
+  getGateway(): Observable<UserWP> {
     let api = `${this.endpoint}/client/routers`;
-    return this.http.get(api, { headers: this.headers }).pipe(
+    return this.http.get<UserWP>(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
       }),
       catchError(this.handleError)
     );
   }
-
-  // getApi(): Observable<any> {
-  //   console.log(this.getToken());
-  //   data: any;
-  //   return this.http.get(`${this.endpoint}/lora`, {
-  //     headers: this.headers,
-  //   }).subscribe((res: any) => { this.data = res };
+  getApi(): Observable<lora> {
+    let api = `${this.endpoint}/lora`;
+    return this.http.get<lora>(api)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
 }

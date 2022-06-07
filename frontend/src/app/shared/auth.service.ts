@@ -9,7 +9,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { lora } from './Lora';
+import { lora } from './lora';
 @Injectable({
   providedIn: 'root',
 })

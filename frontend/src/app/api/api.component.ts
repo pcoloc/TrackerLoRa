@@ -8,7 +8,7 @@ import { Lora } from './lora-data';
   styleUrls: ['./api.component.scss']
 })
 export class ApiComponent implements OnInit {
-    requestURL = 'https://pve.lopezcarrillo.com/lora/data';
+    requestURL = 'https://backend.lopezcarrillo.com/lora/data';
     api: Lora | any;
   constructor(private http: HttpClient, private authService: AuthService) { }
 

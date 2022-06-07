@@ -14,7 +14,7 @@ import { lora } from './lora';
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string =  'https://pve.lopezcarrillo.com';
+  endpoint: string =  'https://backend.lopezcarrillo.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}

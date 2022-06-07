@@ -12,8 +12,9 @@ export class LoraComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getAPiLora();
   }
-  getAPiLora() {
+  getAPiLora(): void {
     this.authService.getApi().subscribe((res) => {
       if (res.result) {
         console.log(res);

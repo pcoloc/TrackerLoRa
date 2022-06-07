@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { lora } from '../shared/Lora';
+import { lora } from '../shared/lora';
 
 @Component({
   selector: 'app-lora',

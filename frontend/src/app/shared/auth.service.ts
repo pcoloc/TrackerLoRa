@@ -61,18 +61,8 @@ export class AuthService {
   // User profile
    getUserProfile(): Observable<any> {
      let api = `${this.endpoint}/user}`;
-     console.log(this.http.get(api).pipe(
-      map((res) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    ));
-     return this.http.get(api).pipe(
-       map((res) => {
-         return res || {};
-       }),
-       catchError(this.handleError)
-     );
+     console.log(this.http.get(api));
+     return this.http.get(api);
  }
   // Error
   handleError(error: HttpErrorResponse) {

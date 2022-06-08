@@ -15,11 +15,7 @@ export class LoraComponent implements OnInit {
     this.getAPiLora();
   }
   getAPiLora(): void {
-    this.authService.getApi().subscribe((res) => {
-      if (res.result) {
-        console.log(res);
-        this.data = res.data;
-      }
-    });;
+    this.data = this.authService.getApi();
+    console.log(this.data);
   }
 }

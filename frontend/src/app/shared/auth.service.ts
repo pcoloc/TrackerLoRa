@@ -61,8 +61,10 @@ export class AuthService {
   // User profile
   getUserProfile(): Observable<any> {
     let api = `${this.endpoint}/user`;
+    console.log(api)
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
+        console.log(res);
         return res || {};
       }),
       catchError(this.handleError)

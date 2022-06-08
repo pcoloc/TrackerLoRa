@@ -61,6 +61,7 @@ export class AuthService {
   // User profile
   getUserProfile(): Observable<any> {
     let api = `${this.endpoint}/user`;
+    this.headers.append('Authorization', 'Bearer ' + this.getToken());
     console.log(api)
     return this.http.get(api, { headers: this.headers });
   }

@@ -6,7 +6,7 @@ import { DashboardComponent } from "./dashboard.component";
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { MapComponent } from './dashboard-components/map/map.component';
 import { TrafficModule } from '../traffic/traffic.module';
-
+import { lora } from '../shared/lora';
 const routes: Routes = [
   {
     path: "",
@@ -31,5 +31,6 @@ const routes: Routes = [
     TopCardsComponent,
     MapComponent,
   ],
+  providers: [lora],
 })
 export class DashboardModule {}

@@ -14,3 +14,12 @@ export class UserWP {
   first_name!: String;
   last_name!: String;
 }
+
+export const userWP: UserWP = {
+    uuid: "",
+    username: "",
+    email: "",
+    first_name: "",
+    last_name:"",
+
+}

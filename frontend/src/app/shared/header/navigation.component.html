@@ -58,7 +58,8 @@
       <div class="dropdown-divider"></div>
       <a i18n class="dropdown-item" href="javascript:void(0)"> Account Setting</a>
       <div class="dropdown-divider"></div>
-      <a i18n class="dropdown-item" href="javascript:void(0)"> Logout</a>
+      <!-- Anchor with logout click from Auth.service -->
+      <a class="dropdown-item" (click)="logout()" i18n> Logout</a>
       <mat-form-field appearance="outline" class="email-input">
         <mat-label i18n>Email</mat-label>
         <input matInput [(ngModel)]="email">

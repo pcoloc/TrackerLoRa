@@ -22,6 +22,9 @@ export class NavigationComponent implements AfterViewInit {
     console.log(this.currentUser);
 
   }
+  logout() {
+    this.authenticationService.doLogout();
+  }
 
   // This is for Notifications
   notifications: Object[] = [

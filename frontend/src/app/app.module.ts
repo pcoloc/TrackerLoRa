@@ -51,6 +51,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 
 import { AuthInterceptor } from './shared/authconfig.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -84,7 +86,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RegisterComponent,
     ProfileComponent,
 
-
   ],
   imports: [
     CommonModule,
@@ -103,6 +104,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatToolbarModule,
     MatTableModule,
     MatDialogModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [
     {
@@ -123,6 +126,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: {}
     },
     Title,
+
   ],
   bootstrap: [AppComponent]
 

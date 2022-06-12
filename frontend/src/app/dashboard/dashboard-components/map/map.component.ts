@@ -1,8 +1,10 @@
 import { Component,Input,OnInit } from '@angular/core';
 import {LeafletService} from "../../../service/leaflet.service";
-import { clients } from './client-data';
 import { relations } from '../../../relaciones/relations-data';
-
+import { AuthService } from 'src/app/shared/auth.service';
+import { client } from './client-data';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddLocationComponent } from './add-location/add-location.component';
 export const DEFAULT_LAT = 36.834224508547145;
 export const DEFAULT_LON =  -2.4592578294686978;
 export const TITULO = 'Proyecto';
@@ -20,17 +22,45 @@ export class MapComponent  implements OnInit {
   @Input() titulo: string = TITULO ;
 
 
-  constructor(private mapService: LeafletService) {
+  constructor(private mapService: LeafletService, private authservice: AuthService,  public dialog: MatDialog) {
   }
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-popup-service
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
+
   ngOnInit(): void {
     if (this.mapService.L) {
       this.initMap();
-    }
-  }
+      this.authservice.getGateways().subscribe(
+        (data: any) => {
+          for(let router of data){
+            let latitud = router.lastLocation.latitud.replace(",", ".");
+            let longitud = router.lastLocation.longitud.replace(",", ".");
+            let service = this.mapService.L;
+              let marker = router.router ? service.marker([latitud, longitud]) : service.circleMarker([router.latitude, router.longitude]);
+              marker.bindPopup("<b>" + router.name + "</b><br>" + "<b>" + router.description + "</b><br> <b>Last Ubi: </b>" + router.lastLocation.date);
+              marker.addTo(this.map);
+          }
+        }
+      );
+      this.authservice.getNodes().subscribe(
+        (data: any) => {
+          for(let node of data){
+            let latitud = node.lastLocation.latitud.replace(",", ".");
+            let longitud = node.lastLocation.longitud.replace(",", ".");
+            let service = this.mapService.L;
+              let marker = !node.router ? service.marker([latitud, longitud]) : service.circleMarker([latitud, longitud]);
+              marker.bindPopup("<b>" + node.name + "</b><br>" + "<b>" + node.description + "</b><br> <b>Last Ubi: </b>" + node.lastLocation.date);
+              marker.addTo(this.map);
+          }});
+        }
 
+  }
+//   function onMapClick(e) {
+//     alert("You clicked the map at " + e.latlng);
+// }
+
+// map.on('click', onMapClick);
 
 
   private initMap(): void {
@@ -61,12 +91,12 @@ export class MapComponent  implements OnInit {
       attribution: 'miau'
     });
 
-    for( let client of clients){
-      let service = this.mapService.L;
-      let marker = client.router ? service.marker([client.latitude, client.longitude]) : service.circleMarker([client.latitude, client.longitude]);
-      marker.bindPopup(client.title);
-      marker.addTo(this.map);
-    }
+    //  for(let router of this.gateway){
+    //   let service = this.mapService.L;
+    //   let marker = router.router ? service.marker([router.latitude, router.longitude]) : service.circleMarker([router.latitude, router.longitude]);
+    //   marker.bindPopup(router.title);
+    //   marker.addTo(this.map);
+    // }
     //From documentation http://leafletjs.com/reference.html#polyline
     // create a red polyline from an arrays of LatLng points
     for (let relation of relations){
@@ -85,5 +115,16 @@ export class MapComponent  implements OnInit {
 // //Get latlng from first marker
 // latlngs.push(mark2.getLatLng());
    }
+
+   openDialog(): void {
+    const dialogRef = this.dialog.open(AddLocationComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
  }

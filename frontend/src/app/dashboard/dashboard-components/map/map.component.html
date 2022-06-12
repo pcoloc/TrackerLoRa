@@ -1,6 +1,14 @@
 <div class="card">
   <div class="card-body">
-      <h4 class="card-title">Mapa</h4>
+    <div class="row">
+      <!-- column for card-title of 6, and column for button new dialog of 6 too-->
+      <div class="col-md-6">
+        <h4 class="card-title">Mapa</h4>
+      </div>
+      <div class="col-md-6">
+        <button mat-raised-button color="primary" (click)="openDialog()">New location</button>
+      </div>
+    </div>
       <h5 class="card-subtitle">Mapa de posicion de tus clientes y routers</h5>
       <div class="map-container">
         <div class="map-frame">

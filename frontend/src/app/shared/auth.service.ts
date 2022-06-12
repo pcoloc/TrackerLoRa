@@ -65,7 +65,7 @@ export class AuthService {
   }
   // User profile
  getUserProfile(): Observable<any> {
-  let api = 'https://backend.lopezcarrillo.com/user/details';
+  let api = `${this.endpoint}/user/details`;
   return this.http.get(api, { headers: this.headers }).pipe(
     map((res) => {
       return res || {};
@@ -73,28 +73,27 @@ export class AuthService {
     catchError(this.handleError)
   );
 }
-  // Error
-  handleError(error: HttpErrorResponse) {
-    console.log("Tenemos un error, apañatelas como puedas");
-    let msg = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      msg = error.error.message;
-    } else {
-      // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(msg);
-  }
-  getGateway(): Observable<UserWP> {
+
+  getGateways(): Observable<any> {
     let api = `${this.endpoint}/client/routers`;
-    return this.http.get<UserWP>(api, { headers: this.headers }).pipe(
+    return this.http.get<any>(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
       }),
       catchError(this.handleError)
     );
   }
+  getNodes(): Observable<any> {
+    let api = `${this.endpoint}/client/nodes`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || {};
+      }
+      ),
+      catchError(this.handleError)
+    );
+  }
+
   //For LoRa Page
   getApi(): Observable<lora> {
     let api = `${this.endpoint}/lora/data`;
@@ -127,4 +126,22 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  // Error
+  handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log("Tenemos un error, apañatelas como puedas");
+    //this.notifyService.showError("msg", "There are some errors");
+    return throwError(() => msg);
+  }
+
+
+
 }

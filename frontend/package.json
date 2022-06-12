@@ -41,6 +41,7 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-lottie": "^8.2.0",
     "ngx-perfect-scrollbar": "^10.1.1",
+    "ngx-toastr": "^14.3.0",
     "postcss": "^8.4.14",
     "rxjs": "~7.5.0",
     "source-map": "^0.7.3",

@@ -18,9 +18,9 @@ export class TopCardsComponent implements OnInit {
     this.getNodesCount();
   }
   getRoutersCount() {
-    this.authenticationService.getRoutersCount().subscribe(clientCount => { this.routersCount = clientCount; console.log(clientCount)});
+    this.authenticationService.getRoutersCount().subscribe(clientCount => { this.routersCount = clientCount;});
   }
   getNodesCount() {
-    this.authenticationService.getNodesCount().subscribe(clientCount => { this.nodesCount = clientCount; console.log(clientCount)});
+    this.authenticationService.getNodesCount().subscribe(clientCount => { this.nodesCount = clientCount;});
   }
 }

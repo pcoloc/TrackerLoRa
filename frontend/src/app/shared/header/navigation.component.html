@@ -48,8 +48,8 @@
       aria-haspopup="true"
       aria-expanded="false"
     >
-    <img mat-card-avatar appGravatar alt="user" class="rounded-circle" [email]="email" width="50"/>
-      <span class="ms-2">{{email || "User"}}</span>
+    <img mat-card-avatar appGravatar alt="user" class="rounded-circle" width="50"/>
+      <span class="ms-2">{{firstName}}</span>
     </a>
     <div class="dropdown-menu-right" ngbDropdownMenu>
       <a i18n class="dropdown-item" href="javascript:void(0)"> My Profile</a>
@@ -60,10 +60,7 @@
       <div class="dropdown-divider"></div>
       <!-- Anchor with logout click from Auth.service -->
       <a class="dropdown-item" (click)="logout()" i18n> Logout</a>
-      <mat-form-field appearance="outline" class="email-input">
-        <mat-label i18n>Email</mat-label>
-        <input matInput [(ngModel)]="email">
-      </mat-form-field>
+
     </div>
   </li>
   <!-- ============================================================== -->

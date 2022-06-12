@@ -95,9 +95,36 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  //For LoRa Page
   getApi(): Observable<lora> {
     let api = `${this.endpoint}/lora/data`;
-    return this.http.get<lora>(api, { headers: this.headers }).pipe(catchError(this.handleError));
+    return this.http.get<lora>(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
 
+    );
+  }
+  getRoutersCount(): Observable<any> {
+    let api = `${this.endpoint}/client/routers/count`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError)
+    );
+  }
+  //For Dashboard Page
+  getNodesCount(): Observable<any> {
+    let api = `${this.endpoint}/client/nodes/count`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError)
+    );
   }
 }

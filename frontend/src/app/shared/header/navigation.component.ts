@@ -10,7 +10,8 @@ import { AuthService } from './../../shared/auth.service';
 
 })
 export class NavigationComponent implements AfterViewInit {
-  email: string = "admin";
+  firstName;
+
   @Output() toggleSidebar = new EventEmitter<void>();
 
 
@@ -22,10 +23,15 @@ export class NavigationComponent implements AfterViewInit {
     console.log(this.currentUser);
 
   }
+  ngOnInit() {
+    this.getUserFirstName();
+  }
   logout() {
     this.authenticationService.doLogout();
   }
-
+  getUserFirstName() {
+    this.authenticationService.getUserProfile().subscribe(user => this.firstName = user.first_name);
+  }
   // This is for Notifications
   notifications: Object[] = [
     {

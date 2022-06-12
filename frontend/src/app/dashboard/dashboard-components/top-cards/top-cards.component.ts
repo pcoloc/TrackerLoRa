@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {topcard,topcards} from './top-cards-data';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-top-cards',
@@ -7,14 +7,20 @@ import {topcard,topcards} from './top-cards-data';
 })
 export class TopCardsComponent implements OnInit {
 
-  topcards:topcard[];
+  routersCount;
+  nodesCount;
+  constructor(private authenticationService: AuthService) {
 
-  constructor() { 
-
-    this.topcards=topcards;
   }
 
   ngOnInit(): void {
+    this.getRoutersCount();
+    this.getNodesCount();
   }
-
+  getRoutersCount() {
+    this.authenticationService.getRoutersCount().subscribe(clientCount => { this.routersCount = clientCount; console.log(clientCount)});
+  }
+  getNodesCount() {
+    this.authenticationService.getNodesCount().subscribe(clientCount => { this.nodesCount = clientCount; console.log(clientCount)});
+  }
 }

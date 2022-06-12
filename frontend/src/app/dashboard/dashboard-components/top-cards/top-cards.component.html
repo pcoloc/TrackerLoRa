@@ -1,17 +1,47 @@
 <div class="row">
-    <div class="col " *ngFor='let topcard of topcards'>
+    <div class="col ">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center">
-                    <button routerLink={{topcard.path}} class="btn btn-lg rounded-circle round round-lg fs-3 d-flex align-items-center justify-content-center bg-light-{{topcard.bgcolor}} text-{{topcard.bgcolor}}">
-                        <i class={{topcard.icon}}></i>
+                    <button routerLink="/gateways" class="btn btn-lg rounded-circle round round-lg fs-3 d-flex align-items-center justify-content-center bg-light-success text-success">
+                        <i class="bi bi-router"></i>
                     </button>
                     <div class="ms-3">
-                        <h3 class="mb-0 font-weight-bold">{{topcard.title}}</h3>
-                        <small class="card-subtitle fs-3">{{topcard.subtitle}}</small>
+                        <h3 class="mb-0 font-weight-bold" i18n>{{routersCount}}</h3>
+                        <small class="card-subtitle fs-3" i18n>Gateways</small>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col ">
+      <div class="card">
+          <div class="card-body">
+              <div class="d-flex align-items-center">
+                  <button routerLink="/nodes" class="btn btn-lg rounded-circle round round-lg fs-3 d-flex align-items-center justify-content-center bg-light-danger text-danger">
+                      <i class="bi bi-diagram-2"></i>
+                  </button>
+                  <div class="ms-3">
+                      <h3 class="mb-0 font-weight-bold" i18n>{{nodesCount}}</h3>
+                      <small class="card-subtitle fs-3" i18n>Nodes</small>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col ">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <button routerLink="/monitoreos" class="btn btn-lg rounded-circle round round-lg fs-3 d-flex align-items-center justify-content-center bg-light-warning text-warning">
+                    <i class="bi bi-sunglasses"></i>
+                </button>
+                <div class="ms-3">
+                    <h3 class="mb-0 font-weight-bold">1</h3>
+                    <small class="card-subtitle fs-3">Monitoring</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

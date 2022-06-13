@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { AuthService } from './../shared/auth.service';
 import { Router } from '@angular/router';
 @Component({
@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  signinForm: FormGroup;
+  signinForm: UntypedFormGroup;
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public authService: AuthService,
     public router: Router
   ) {

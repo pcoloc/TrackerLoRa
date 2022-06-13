@@ -12,7 +12,7 @@ WORKDIR /dist/src/app
 RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 COPY . .
-RUN npm install -g npm
+RUN npm install --location=global npm
 RUN npm install
 RUN npm run build --prod --deploy-url=https://trackerlora.lopezcarrillo.com
 #COPY /dist/frontend/index.html /dist/frontend/404.html

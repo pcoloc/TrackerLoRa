@@ -52,9 +52,23 @@ export class MapComponent  implements OnInit {
               let marker = !node.router ? service.marker([latitud, longitud]) : service.circleMarker([latitud, longitud]);
               marker.bindPopup("<b>" + node.name + "</b><br>" + "<b>" + node.description + "</b><br> <b>Last Ubi: </b>" + node.lastLocation.date);
               marker.addTo(this.map);
-          }});
+          }
         }
+      );
 
+      this.authservice.getTtnMapper().subscribe(
+        (data: any) => {
+          for(let ttn of data){
+            let latitud = ttn.latitude; //.replace(",", ".");
+            let longitud = ttn.longitude; //.replace(",", ".");
+            let service = this.mapService.L;
+              let marker = service.circleMarker([latitud, longitud]);
+              marker.bindPopup("<b>" + ttn.devID + "</b><br>" + "<b>" + ttn.rssi + "dB</b><br> <b>Last Ubi: </b>" + ttn.session);
+              marker.addTo(this.map);
+          }
+        }
+      );
+    }
   }
 //   function onMapClick(e) {
 //     alert("You clicked the map at " + e.latlng);

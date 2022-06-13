@@ -3,11 +3,8 @@ import { User } from './user';
 import { UserWP } from './user';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { lora } from './lora';
 @Injectable({
@@ -18,7 +15,7 @@ export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json')
   .set('Accept', 'application/json')
   currentUser = {};
-  constructor(private http: HttpClient, public router: Router) {}
+  constructor(private http: HttpClient, public router: Router, private toastr: ToastrService) {}
   // Register
   signUp(user: User): Observable<any> {
     var formData: any = new FormData();
@@ -72,7 +69,7 @@ export class AuthService {
     }),
     catchError(this.handleError)
   );
-}
+  }
 
   getGateways(): Observable<any> {
     let api = `${this.endpoint}/client/routers`;
@@ -93,6 +90,17 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  getTtnMapper(): Observable<any> {
+    let api = `${this.endpoint}/ttnMapper/all`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || {};
+      }
+      ),
+      catchError(this.handleError)
+    );
+  }
+
 
   //For LoRa Page
   getApi(): Observable<lora> {
@@ -123,12 +131,18 @@ export class AuthService {
         return res || 0;
       }
       ),
-      catchError(this.handleError)
+      catchError(this.handleError,),
     );
+  }
+  showError(message: string) {
+    this.toastr.error(message, 'Error');
   }
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';
+    if(error.status == 401){
+     console.log("Error 401, No estás autorizado, inicia sesión nuevamente");
+    }
     if (error.error instanceof ErrorEvent) {
       // client-side error
       msg = error.error.message;
@@ -136,11 +150,13 @@ export class AuthService {
     } else {
       // server-side error
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      console.log(msg);
     }
     console.log("Tenemos un error, apañatelas como puedas");
     //this.notifyService.showError("msg", "There are some errors");
     return throwError(() => msg);
   }
+
 
 
 

@@ -2,7 +2,6 @@ import { Component,Input,OnInit } from '@angular/core';
 import {LeafletService} from "../../../service/leaflet.service";
 import { relations } from '../../../relaciones/relations-data';
 import { AuthService } from 'src/app/shared/auth.service';
-import { client } from './client-data';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddLocationComponent } from './add-location/add-location.component';
 export const DEFAULT_LAT = 36.834224508547145;
@@ -61,14 +60,42 @@ export class MapComponent  implements OnInit {
           for(let ttn of data){
             let latitud = ttn.latitude; //.replace(",", ".");
             let longitud = ttn.longitude; //.replace(",", ".");
+            console.log(ttn.latitude);
             let service = this.mapService.L;
+            let color = this.getColor(ttn.gateways[0].rssi);
               let marker = service.circleMarker([latitud, longitud]);
-              marker.bindPopup("<b>" + ttn.dev_id + "</b><br>" + "<b>" + ttn.gateway[0].rssi + "dB</b><br> <b>snr: </b>" + ttn.gateway[0].snr + "dB</b><br> <b>spreading_factor: </b>" + ttn.spreading_factor);
+              marker.setStyle({color: color});
+              marker.bindPopup("<b>Gateway: </b>" + ttn.gateways[0].gtw_id + "</b><br> <b>Cliente: </b>" + ttn.dev_id + "</b><br> <b>RX: </b>" + "14" + "dBm</b><br> <b>RSSI: </b>" + ttn.gateways[0].rssi + "dB</b><br> <b>SNR: </b>" + ttn.gateways[0].snr + "dB</b><br> <b>spreading_factor: </b>" + ttn.spreading_factor);
               marker.addTo(this.map);
           }
         }
       );
     }
+  }
+
+  //a function to get color based on the value of the node RSSI
+  private getColor(rssi: number) {
+    if(rssi < -120){
+      return '#f23d30';
+    }
+    else if (rssi < -110) {
+      return '#f00722';
+    }else if (rssi < -100) {
+        return '#0000ff';
+    } else if (rssi < -90) {
+        return '#d62060';
+    } else if (rssi < -80) {
+      return '#276670';
+    } else if (rssi < -70) {
+      return '#15abc2';
+    } else if (rssi < -60) {
+      return '#196122';
+    } else if (rssi < -50) {
+      return '#0fa821';
+    } else if (rssi < 0) {
+      return '#12ff2e';
+    }
+    return '#ff0000';
   }
 //   function onMapClick(e) {
 //     alert("You clicked the map at " + e.latlng);
@@ -140,5 +167,6 @@ export class MapComponent  implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
 
  }

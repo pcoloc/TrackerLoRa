@@ -91,7 +91,7 @@ export class AuthService {
     );
   }
   getTtnMapper(): Observable<any> {
-    let api = `${this.endpoint}/ttnMapper/all`;
+    let api = `${this.endpoint}/ttnMapperData/all`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};

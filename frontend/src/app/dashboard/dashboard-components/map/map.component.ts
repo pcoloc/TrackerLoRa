@@ -63,7 +63,7 @@ export class MapComponent  implements OnInit {
             let longitud = ttn.longitude; //.replace(",", ".");
             let service = this.mapService.L;
               let marker = service.circleMarker([latitud, longitud]);
-              marker.bindPopup("<b>" + ttn.devID + "</b><br>" + "<b>" + ttn.rssi + "dB</b><br> <b>Last Ubi: </b>" + ttn.session);
+              marker.bindPopup("<b>" + ttn.dev_id + "</b><br>" + "<b>" + ttn.gateway[0].rssi + "dB</b><br> <b>snr: </b>" + ttn.gateway[0].snr + "dB</b><br> <b>spreading_factor: </b>" + ttn.spreading_factor);
               marker.addTo(this.map);
           }
         }

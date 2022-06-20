@@ -60,7 +60,6 @@ export class MapComponent  implements OnInit {
           for(let ttn of data){
             let latitud = ttn.latitude; //.replace(",", ".");
             let longitud = ttn.longitude; //.replace(",", ".");
-            console.log(ttn.latitude);
             let service = this.mapService.L;
             let color = this.getColor(ttn.gateways[0].rssi);
               let marker = service.circleMarker([latitud, longitud]);

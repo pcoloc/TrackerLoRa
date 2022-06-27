@@ -27,7 +27,7 @@ export class MapComponent  implements OnInit {
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-popup-service
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if (this.mapService.L) {
       this.initMap();
       this.authservice.getGateways().subscribe(
@@ -55,16 +55,16 @@ export class MapComponent  implements OnInit {
         }
       );
 
-      this.authservice.getTtnMapper().subscribe(
+      (await this.authservice.getTtnMapper()).subscribe(
         (data: any) => {
           for(let ttn of data){
-            let latitud = ttn.latitude; //.replace(",", ".");
-            let longitud = ttn.longitude; //.replace(",", ".");
+            let latitud = ttn.latitud; //.replace(",", ".");
+            let longitud = ttn.longitud; //.replace(",", ".");
             let service = this.mapService.L;
-            let color = this.getColor(ttn.gateways[0].rssi);
+            let color = this.getColor(ttn.gateway_1.rssi);
               let marker = service.circleMarker([latitud, longitud]);
               marker.setStyle({color: color});
-              marker.bindPopup("<b>Gateway: </b>" + ttn.gateways[0].gtw_id + "</b><br> <b>Cliente: </b>" + ttn.dev_id + "</b><br> <b>RX: </b>" + "14" + "dBm</b><br> <b>RSSI: </b>" + ttn.gateways[0].rssi + "dB</b><br> <b>SNR: </b>" + ttn.gateways[0].snr + "dB</b><br> <b>spreading_factor: </b>" + ttn.spreading_factor);
+              marker.bindPopup("<b>Gateway: </b>" + ttn.gateway_1.name + "</b><br> <b>Cliente: </b>" + ttn.cliente + "</b><br> <b>RX: </b>" + "14" + "dBm</b><br> <b>RSSI: </b>" + ttn.gateway_1.rssi + "dB</b><br> <b>SNR: </b>" + ttn.gateway_1.snr + "dB</b><br> <b>spreading_factor: </b>" + ttn.sf + "<br> <b>Metros: </b>" + ttn.gateway_1.metros);
               marker.addTo(this.map);
           }
         }

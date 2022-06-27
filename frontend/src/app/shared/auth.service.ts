@@ -90,11 +90,11 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
-  getTtnMapper(): Observable<any> {
-    let api = `${this.endpoint}/ttnMapperData/all`;
+  async getTtnMapper(): Promise<Observable<any>> {
+    let api = `${this.endpoint}/ttnMapperData/cleaned`;
     return this.http.get(api, { headers: this.headers }).pipe(
-      map((res) => {
-        return res || {};
+      map(async (res) => {
+        return await res || {};
       }
       ),
       catchError(this.handleError)

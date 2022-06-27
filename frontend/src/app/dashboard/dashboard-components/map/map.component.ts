@@ -57,6 +57,7 @@ export class MapComponent  implements OnInit {
 
       (await this.authservice.getTtnMapper()).subscribe(
         (data: any) => {
+          console.log("paso")
           for(let ttn of data){
             let latitud = ttn.latitud; //.replace(",", ".");
             let longitud = ttn.longitud; //.replace(",", ".");

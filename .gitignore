@@ -5,7 +5,7 @@ Thumbs.db
 pubspec.lock
 .c9
 .idea/
-.devcontainer/*
+!.devcontainer/*
 !.devcontainer/README.md
 !.devcontainer/recommended-devcontainer.json
 !.devcontainer/recommended-Dockerfile

@@ -1,0 +1,42 @@
+
+        # - name: GREETING
+        # value: "Warm greetings to"
+        # - name: HONORIFIC
+        # value: "The Most Honorable"
+        # - name: NAME
+        # value: "Kubernetes"
+        # - name: server.port
+        # valueFrom:
+        #     configMapKeyRef:
+        #         name: special-config
+        #         key: special.how
+        # - name: server.port
+        # valueFrom:
+        #     secretKeyRef:
+        #         name: special-config
+        #         key: special.how
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackerlora-front-deployment
+  labels:
+    app: trackerlora-front
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trackerlora-front
+  template:
+    metadata:
+      labels:
+        app: trackerlora-front
+    spec:
+      restartPolicy: always
+      containers:
+      - name: trackerlora-front
+        image: pcoloc/trackerlora_front:latest
+        ports:
+        - containerPort: 80
+

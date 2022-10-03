@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: donde_estamos
         run: ls
-      - name: run_docker-compose
-        run: docker-compose -f "docker-compose.yml" up -d --build --force-recreate
+      #- name: run_docker-compose
+        #run: docker-compose -f "docker-compose.yml" up -d --build --force-recreate
 
 

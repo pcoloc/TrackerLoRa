@@ -9,5 +9,9 @@ services:
     restart: unless-stopped
     networks:
       - trackerlora
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 192.168.1.124:24224
 networks:
     trackerlora:

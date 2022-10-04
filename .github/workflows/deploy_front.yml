@@ -24,6 +24,6 @@ jobs:
       - name: donde_estamos
         run: ls
       - name: run_docker-compose
-        run: docker-compose build -f "docker-compose.yml"
+        run: docker-compose -f "docker-compose.yml" up -d --build --force-recreate
 
 

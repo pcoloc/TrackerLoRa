@@ -2,7 +2,7 @@ version: '3.7'
 services:
   frontend:
     build: ./frontend
-    image: pcoloc/trackerlora_front
+    image: paco/trackerlora_front
     container_name: trackerlora_front
     ports:
       - "80:80"

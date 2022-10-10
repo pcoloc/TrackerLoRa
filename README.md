@@ -5,7 +5,7 @@ LoRa tracker to estimate the location of any client that connects to one or more
 > Este año se me está haciendo imposible.
 
 La página va a estar alojada en: 
-[TrackerLoRa](https://trackerlora.lopezcarrillo.com)
+[TrackerLoRa](https://tracker.lopezcarrillo.com)
 
 ## 1. Diagrama y diseño del proyecto
 

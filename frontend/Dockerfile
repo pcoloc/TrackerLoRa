@@ -15,7 +15,7 @@ COPY . .
 RUN npm install --location=global npm
 RUN npm install --legacy-peer-deps
 #RUN npm install
-RUN npm run build --prod --deploy-url=https://trackerlora.lopezcarrillo.com
+RUN npm run build --prod --deploy-url=https://tracker.lopezcarrillo.com
 #COPY /dist/frontend/index.html /dist/frontend/404.html
 #RUN  tar -zcvf trackerlora.tar.gz /dist/frontend/
 ### STAGE 2:RUN ###

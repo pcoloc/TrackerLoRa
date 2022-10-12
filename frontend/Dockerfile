@@ -12,8 +12,7 @@ WORKDIR /dist/src/app
 RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 COPY . .
-RUN npm install --location=global npm
-RUN npm install --legacy-peer-deps
+RUN npm install
 #RUN npm install
 RUN npm run build --prod --deploy-url=https://tracker.lopezcarrillo.com
 #COPY /dist/frontend/index.html /dist/frontend/404.html
@@ -21,6 +20,7 @@ RUN npm run build --prod --deploy-url=https://tracker.lopezcarrillo.com
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
 FROM fholzer/nginx-brotli AS ngi
+EXPOSE 80
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder
 COPY --from=build /dist/src/app/dist/frontend/index.html /dist/src/app/dist/frontend/404.html
@@ -32,4 +32,3 @@ COPY --from=build /dist/src/app/dist/frontend /usr/share/nginx/html
 
 HEALTHCHECK CMD wget --spider --tries=1 --no-verbose http://localhost:80 || exit 1
 
-EXPOSE 80

@@ -29,4 +29,7 @@ COPY --from=build /dist/src/app/dist/frontend/index.html /dist/src/app/dist/fron
 COPY --from=build /dist/src/app/dist/frontend /usr/share/nginx/html
 # Exposing a port, here it means that inside the container
 # the app will be using Port 80 while running
+
+HEALTHCHECK CMD wget --spider --tries=1 --no-verbose http://localhost:80 || exit 1
+
 EXPOSE 80

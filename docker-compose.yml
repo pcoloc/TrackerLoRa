@@ -2,7 +2,7 @@ version: '3.7'
 services:
   frontend:
     build: ./frontend
-    image: paco/trackerlora_front
+    image: pcoloc/trackerlora_front
     container_name: trackerlora_front
     ports:
       - "80:80"
@@ -12,6 +12,6 @@ services:
     logging:
       driver: fluentd
       options:
-        fluentd-address: 192.168.1.124:24224
+        fluentd-address: efk.lopezcarrillo.com:12345
 networks:
     trackerlora:

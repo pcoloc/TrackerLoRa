@@ -23,6 +23,7 @@ export class RelacionesComponent implements OnInit {
   ngOnInit(): void {
     this.getCountTotalRows();
     this.getCountDragino(this.dragino);
+    this.getCountMikrotik(this.mikrotik);
   }
 
   getDistancia(lat1, lon1, lat2, lon2) : number {

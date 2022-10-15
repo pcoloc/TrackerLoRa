@@ -18,7 +18,7 @@ export class RelacionesComponent implements OnInit {
   constructor(private authenticationService: AuthService) {
     this.topSelling=TopSelling;
     this.dragino = "dragino-pac";
-    this.mikrotik = "paco96routermikrotik"
+    this.mikrotik = "paco96routermikro"
  }
   ngOnInit(): void {
     this.getCountTotalRows();

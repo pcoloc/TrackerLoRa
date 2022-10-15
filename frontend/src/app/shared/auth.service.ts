@@ -134,6 +134,86 @@ export class AuthService {
       catchError(this.handleError,),
     );
   }
+
+  //For Statistics Page
+  getCountSf(sf): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/sf/${sf}/`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+  getCountPw(pw): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/pw/${pw}/`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+  getCountGw(gw): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/gw/${gw}/`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+  getCountGwSf(gw, sf): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/gwsf/${gw}/${sf}`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+  getCountGwPw(gw, pw): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/gwpw/${gw}/${pw}`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+  getCountSfPw(sf, pw): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/sfpw/${sf}/${pw}`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+  getCountTotalRows(): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/total`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
+
   showError(message: string) {
     this.toastr.error(message, 'Error');
   }
@@ -152,7 +232,7 @@ export class AuthService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
       console.log(msg);
     }
-    console.log("Tenemos un error, apañatelas como puedas");
+    console.log("Tenemos un error, apáñatelas como puedas");
     //this.notifyService.showError("msg", "There are some errors");
     return throwError(() => msg);
   }

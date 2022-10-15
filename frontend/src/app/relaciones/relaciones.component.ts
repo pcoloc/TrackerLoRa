@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Product,TopSelling,} from './table-data';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-relaciones',
@@ -9,11 +10,16 @@ import {Product,TopSelling,} from './table-data';
 export class RelacionesComponent implements OnInit {
 
   topSelling:Product[];
-
-  constructor() {
+  totalRowCount;
+  routerCount;
+  gw;
+  constructor(private authenticationService: AuthService) {
     this.topSelling=TopSelling;
+    this.gw = "dragino-pac";
  }
   ngOnInit(): void {
+    this.getCountTotalRows();
+    this.getCountGw(this.gw);
   }
 
   getDistancia(lat1, lon1, lat2, lon2) : number {
@@ -32,6 +38,14 @@ export class RelacionesComponent implements OnInit {
   deg2rad(deg) {
     return deg * (Math.PI/180)
   }
+
+  getCountTotalRows() {
+    this.authenticationService.getCountTotalRows().subscribe(clientCount => { this.totalRowCount = clientCount;});
+  }
+  getCountGw(gw) {
+    this.authenticationService.getCountGw(gw).subscribe(clientCount => { this.routerCount = clientCount;});
+  }
+
 }
 
 

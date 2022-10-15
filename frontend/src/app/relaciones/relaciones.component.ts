@@ -11,15 +11,18 @@ export class RelacionesComponent implements OnInit {
 
   topSelling:Product[];
   totalRowCount;
-  routerCount;
-  gw;
+  draginoCount;
+  dragino;
+  mikrotikCount;
+  mikrotik;
   constructor(private authenticationService: AuthService) {
     this.topSelling=TopSelling;
-    this.gw = "dragino-pac";
+    this.dragino = "dragino-pac";
+    this.mikrotik = "paco96routermikrotik"
  }
   ngOnInit(): void {
     this.getCountTotalRows();
-    this.getCountGw(this.gw);
+    this.getCountDragino(this.dragino);
   }
 
   getDistancia(lat1, lon1, lat2, lon2) : number {
@@ -42,8 +45,12 @@ export class RelacionesComponent implements OnInit {
   getCountTotalRows() {
     this.authenticationService.getCountTotalRows().subscribe(clientCount => { this.totalRowCount = clientCount;});
   }
-  getCountGw(gw) {
-    this.authenticationService.getCountGw(gw).subscribe(clientCount => { this.routerCount = clientCount;});
+  getCountDragino(dragino) {
+    this.authenticationService.getCountGw(dragino).subscribe(clientCount => { this.draginoCount = clientCount;});
+  }
+
+  getCountMikrotik(mikrotik) {
+    this.authenticationService.getCountGw(mikrotik).subscribe(clientCount => { this.mikrotikCount = clientCount;});
   }
 
 }

@@ -9,14 +9,27 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class RelacionesComponent implements OnInit {
 
-  topSelling:Product[];
   totalRowCount;
   draginoCount;
   dragino;
   mikrotikCount;
   mikrotik;
+
+  Sf7Pw1Count;
+  Sf7Pw7Count;
+  Sf7Pw14Count;
+  Sf7TotalCount;
+
+  Sf9Pw1Count;
+  Sf9Pw7Count;
+  Sf9Pw14Count;
+  Sf9TotalCount;
+
+  Pw1TotalCount;
+  Pw7TotalCount;
+  Pw14TotalCount;
+
   constructor(private authenticationService: AuthService) {
-    this.topSelling=TopSelling;
     this.dragino = "dragino-pac";
     this.mikrotik = "paco96routermikro"
  }
@@ -24,6 +37,20 @@ export class RelacionesComponent implements OnInit {
     this.getCountTotalRows();
     this.getCountDragino(this.dragino);
     this.getCountMikrotik(this.mikrotik);
+
+    this.Sf7Pw1Count = this.getCountGwSfPw('dragino-pac', 7, 1);
+    this.Sf7Pw7Count = this.getCountGwSfPw('dragino-pac', 7, 7);
+    this.Sf7Pw14Count = this.getCountGwSfPw('dragino-pac', 7, 14);
+    this.Sf9Pw1Count = this.getCountGwSfPw('dragino-pac', 9, 1);
+    this.Sf9Pw7Count = this.getCountGwSfPw('dragino-pac', 9, 7);
+    this.Sf9Pw14Count = this.getCountGwSfPw('dragino-pac', 9, 14);
+
+    this.Pw1TotalCount = this.getCountGwPw('dragino-pac', 1);
+    this.Pw7TotalCount = this.getCountGwPw('dragino-pac', 7);
+    this.Pw14TotalCount = this.getCountGwPw('dragino-pac', 14);
+
+    this.Sf7TotalCount = this.getCountGwSf('dragino-pac', 7);
+    this.Sf9TotalCount = this.getCountGwSf('dragino-pac', 9);
   }
 
   getDistancia(lat1, lon1, lat2, lon2) : number {
@@ -52,6 +79,18 @@ export class RelacionesComponent implements OnInit {
 
   getCountMikrotik(mikrotik) {
     this.authenticationService.getCountGw(mikrotik).subscribe(clientCount => { this.mikrotikCount = clientCount;});
+  }
+
+  getCountGwSfPw(gw, sf, pw) {
+    return this.authenticationService.getCountGwSfPw(gw, sf, pw).subscribe();
+  }
+
+  getCountGwPw(gw, pw) {
+    return this.authenticationService.getCountGwPw(gw, pw).subscribe();
+  }
+
+  getCountGwSf(gw, sf) {
+    return this.authenticationService.getCountGwSf(gw, sf).subscribe();
   }
 
 }

@@ -202,6 +202,17 @@ export class AuthService {
     );
   }
 
+  getCountGwSfPw(gw, sf, pw): Observable<any> {
+    let api = `${this.endpoint}/ttnMapperData/gwsfpw/${gw}/${sf}/${pw}`
+    return this.http.get(api, { headers: this.headers }).pipe(
+      map((res) => {
+        return res || 0;
+      }
+      ),
+      catchError(this.handleError,),
+    );
+  }
+
   getCountTotalRows(): Observable<any> {
     let api = `${this.endpoint}/ttnMapperData/total`
     return this.http.get(api, { headers: this.headers }).pipe(
@@ -212,6 +223,8 @@ export class AuthService {
       catchError(this.handleError,),
     );
   }
+
+
 
 
   showError(message: string) {

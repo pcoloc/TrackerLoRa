@@ -49,41 +49,70 @@
 </div>
 <div class="card">
   <div class="card-body">
-      <h4 class="card-title">Relaciones</h4>
-      <h5 class="card-subtitle text-muted">Distancias, potencias...</h5>
+      <h4 class="card-title">Datos de Dragino-Pac</h4>
+      <h5 class="card-subtitle text-muted">Cantidad de datos por Spreading factor y potencias...</h5>
       <div class="table-responsive">
         <table class="table align-middle text-nowrap">
             <thead>
                 <tr>
-                    <th class="text-dark font-medium fs-4">Router</th>
-                    <th class="text-dark font-medium fs-4">Último mensaje</th>
-                    <th class="text-dark font-medium fs-4">Estado</th>
-                    <th class="text-dark font-medium fs-4">Enviados/Recibidos</th>
-                    <th class="text-dark font-medium fs-4">Acciones</th>
+                    <th class="text-dark font-medium fs-4">SF/mV</th>
+                    <th class="text-dark font-medium fs-4">1</th>
+                    <th class="text-dark font-medium fs-4">7</th>
+                    <th class="text-dark font-medium fs-4">14</th>
+                    <th class="text-dark font-medium fs-4">Total</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor='let ts of topSelling'>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src={{ts.image}} alt="user" width="45" class="rounded-circle">
-                            <div class="ms-3">
-                                <h5 class="mb-0 font-medium">{{ts.uname}}</h5>
-                                <span class="text-muted">{{ts.gmail}}</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="fs-4">{{ts.lastTime}}</td>
-                    <td>
-                        <span class="p-2 bg-{{ts.status}} rounded-circle d-inline-block ms-3"></span>
-                    </td>
-
-                    <td>
-                        <h5 class="mb-0 fw-normal">{{ts.receive}}</h5>
-                    </td>
-                    <td>
-                        <button class="mb-0 fw-normal">{{ts.budget}}</button>
-                    </td>
+                <tr>
+                  <td>
+                    <h5 class="mb-0 fw-normal">SF7</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf7Pw1Count}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf7Pw7Count}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf7Pw14Count}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf7TotalCount}}</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h5 class="mb-0 fw-normal">SF9</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf9Pw1Count}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf9Pw7Count}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf9Pw14Count}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Sf9TotalCount}}</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h5 class="mb-0 fw-normal">Total</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Pw1TotalCount}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Pw7TotalCount}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{Pw14TotalCount}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="mb-0 fw-normal">{{draginoCount}</h5>
+                  </td>
                 </tr>
             </tbody>
         </table>

@@ -38,19 +38,11 @@ export class RelacionesComponent implements OnInit {
     this.getCountDragino(this.dragino);
     this.getCountMikrotik(this.mikrotik);
 
-    this.Sf7Pw1Count = this.getCountGwSfPw('dragino-pac', 7, 1);
-    this.Sf7Pw7Count = this.getCountGwSfPw('dragino-pac', 7, 7);
-    this.Sf7Pw14Count = this.getCountGwSfPw('dragino-pac', 7, 14);
-    this.Sf9Pw1Count = this.getCountGwSfPw('dragino-pac', 9, 1);
-    this.Sf9Pw7Count = this.getCountGwSfPw('dragino-pac', 9, 7);
-    this.Sf9Pw14Count = this.getCountGwSfPw('dragino-pac', 9, 14);
+    this.getCountGwSfPw('dragino-pac');
 
-    this.Pw1TotalCount = this.getCountGwPw('dragino-pac', 1);
-    this.Pw7TotalCount = this.getCountGwPw('dragino-pac', 7);
-    this.Pw14TotalCount = this.getCountGwPw('dragino-pac', 14);
+    this.getCountGwPw('dragino-pac');
 
-    this.Sf7TotalCount = this.getCountGwSf('dragino-pac', 7);
-    this.Sf9TotalCount = this.getCountGwSf('dragino-pac', 9);
+    this.getCountGwSf('dragino-pac');
   }
 
   getDistancia(lat1, lon1, lat2, lon2) : number {
@@ -81,16 +73,26 @@ export class RelacionesComponent implements OnInit {
     this.authenticationService.getCountGw(mikrotik).subscribe(clientCount => { this.mikrotikCount = clientCount;});
   }
 
-  getCountGwSfPw(gw, sf, pw) {
-    return this.authenticationService.getCountGwSfPw(gw, sf, pw);
+  getCountGwSfPw(gw) {
+    this.authenticationService.getCountGwSfPw(gw, 7, 1).subscribe(clientCount => { this.Sf7Pw1Count = clientCount;});
+    this.authenticationService.getCountGwSfPw(gw, 7, 7).subscribe(clientCount => { this.Sf7Pw7Count = clientCount;});
+    this.authenticationService.getCountGwSfPw(gw, 7, 14).subscribe(clientCount => { this.Sf7Pw14Count = clientCount;});
+    this.authenticationService.getCountGwSfPw(gw, 9, 1).subscribe(clientCount => { this.Sf9Pw1Count = clientCount;});
+    this.authenticationService.getCountGwSfPw(gw, 9, 7).subscribe(clientCount => { this.Sf9Pw7Count = clientCount;});
+    this.authenticationService.getCountGwSfPw(gw, 9, 14).subscribe(clientCount => { this.Sf9Pw14Count = clientCount;});
+
   }
 
-  getCountGwPw(gw, pw) {
-    return this.authenticationService.getCountGwPw(gw, pw).subscribe();
+  getCountGwPw(gw) {
+    this.authenticationService.getCountGwPw(gw, 1).subscribe(clientCount => { this.Pw1TotalCount = clientCount;});
+    this.authenticationService.getCountGwPw(gw, 7).subscribe(clientCount => { this.Pw7TotalCount = clientCount;});
+    this.authenticationService.getCountGwPw(gw, 14).subscribe(clientCount => { this.Pw14TotalCount = clientCount;});
+
   }
 
-  getCountGwSf(gw, sf) {
-    return this.authenticationService.getCountGwSf(gw, sf).subscribe();
+  getCountGwSf(gw) {
+    this.authenticationService.getCountGwSf(gw, 7).subscribe(clientCount => { this.Sf7TotalCount = clientCount;});
+    this.authenticationService.getCountGwSf(gw, 9).subscribe(clientCount => { this.Sf9TotalCount = clientCount;});
   }
 
 }

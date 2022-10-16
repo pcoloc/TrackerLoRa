@@ -82,7 +82,7 @@ export class RelacionesComponent implements OnInit {
   }
 
   getCountGwSfPw(gw, sf, pw) {
-    return this.authenticationService.getCountGwSfPw(gw, sf, pw).subscribe();
+    return this.authenticationService.getCountGwSfPw(gw, sf, pw);
   }
 
   getCountGwPw(gw, pw) {

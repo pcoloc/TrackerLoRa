@@ -91,7 +91,7 @@ export class AuthService {
     );
   }
   async getTtnMapper(): Promise<Observable<any>> {
-    let api = `${this.endpoint}/ttnMapperData/cleaned`;
+    let api = `${this.endpoint}/ttnMapperData/cleaned/9/7/dragino-pac`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};

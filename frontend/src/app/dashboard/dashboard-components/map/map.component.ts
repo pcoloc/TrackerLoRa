@@ -63,17 +63,17 @@ export class MapComponent  implements OnInit {
 
   onChangeGw(value) {
       this.gw = value;
-      this.callMap();
+      this.getUbis();
   }
 
   onChangeSf(value){
     this.sf = value;
-    this.callMap();
+    this.getUbis();
   }
 
   onChangePw(value) {
     this.pw = value;
-    this.callMap();
+    this.getUbis();
   }
 
   constructor(private mapService: LeafletService, private authservice: AuthService,  public dialog: MatDialog) {
@@ -83,12 +83,14 @@ export class MapComponent  implements OnInit {
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
 
   async ngOnInit(): Promise<void> {
-    this.callMap();
+    if (this.mapService.L) {
+      this.initMap();
+      this.callMap();
+    }
   }
 
   async callMap(){
-    if (this.mapService.L) {
-      this.initMap();
+
       this.authservice.getGateways().subscribe(
         (data: any) => {
           for(let router of data){
@@ -114,24 +116,25 @@ export class MapComponent  implements OnInit {
         }
       );
 
-      (await this.authservice.getTtnMapper(this.gateways, this.sf, this.pw)).subscribe(
-        (data: any) => {
-          console.log("paso")
-          console.log(data)
-          for(let ttn of data){
-            let latitud = ttn?.latitud; //.replace(",", ".");
-            let longitud = ttn?.longitud; //.replace(",", ".");
-            let service = this.mapService.L;
-            console.log(ttn.gateway_1?.rssi)
-            let color = this.getColor(ttn.gateway_1?.rssi);
-              let marker = service.circleMarker([latitud, longitud]);
-              marker.setStyle({color: color});
-              marker.bindPopup("<b>Gateway: </b>" + ttn.gateway_1?.name + "</b><br> <b>Cliente: </b>" + ttn?.cliente + "</b><br> <b>RX: </b>" + ttn?.potencia + "dBm</b><br> <b>RSSI: </b>" + ttn?.gateway_1.rssi + "dB</b><br> <b>SNR: </b>" + ttn.gateway_1?.snr + "dB</b><br> <b>spreading_factor: </b>" + ttn?.sf + "<br> <b>Metros: </b>" + ttn?.gateway_1.metros);
-              marker.addTo(this.map);
-          }
+  }
+
+  async getUbis(){
+    (await this.authservice.getTtnMapper(this.gw, this.sf, this.pw)).subscribe(
+      (data: any) => {
+        console.log("paso")
+        for(let ttn of data){
+          let latitud = ttn?.latitud; //.replace(",", ".");
+          let longitud = ttn?.longitud; //.replace(",", ".");
+          let service = this.mapService.L;
+          console.log(ttn.gateway_1?.rssi)
+          let color = this.getColor(ttn.gateway_1?.rssi);
+            let marker = service.circleMarker([latitud, longitud]);
+            marker.setStyle({color: color});
+            marker.bindPopup("<b>Gateway: </b>" + ttn.gateway_1?.name + "</b><br> <b>Cliente: </b>" + ttn?.cliente + "</b><br> <b>RX: </b>" + ttn?.potencia + "dBm</b><br> <b>RSSI: </b>" + ttn?.gateway_1.rssi + "dB</b><br> <b>SNR: </b>" + ttn.gateway_1?.snr + "dB</b><br> <b>spreading_factor: </b>" + ttn?.sf + "<br> <b>Metros: </b>" + ttn?.gateway_1.metros);
+            marker.addTo(this.map);
         }
-      );
-    }
+      }
+    );
   }
   //a function to get color based on the value of the node RSSI
   private getColor(rssi: number) {

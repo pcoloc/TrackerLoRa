@@ -63,17 +63,20 @@ export class MapComponent  implements OnInit {
 
   onChangeGw(value) {
       this.gw = value;
-      this.getUbis();
+      this.mapService.L.clearLayers();
+      this.callMap();
   }
 
   onChangeSf(value){
     this.sf = value;
-    this.getUbis();
+    this.mapService.L.clearLayers();
+    this.callMap();
   }
 
   onChangePw(value) {
     this.pw = value;
-    this.getUbis();
+    this.mapService.L.clearLayers();
+    this.callMap();
   }
 
   constructor(private mapService: LeafletService, private authservice: AuthService,  public dialog: MatDialog) {
@@ -115,6 +118,7 @@ export class MapComponent  implements OnInit {
           }
         }
       );
+      this.getUbis();
 
   }
 
@@ -122,6 +126,7 @@ export class MapComponent  implements OnInit {
     (await this.authservice.getTtnMapper(this.gw, this.sf, this.pw)).subscribe(
       (data: any) => {
         console.log("paso")
+
         for(let ttn of data){
           let latitud = ttn?.latitud; //.replace(",", ".");
           let longitud = ttn?.longitud; //.replace(",", ".");

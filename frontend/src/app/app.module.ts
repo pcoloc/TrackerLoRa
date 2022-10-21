@@ -31,9 +31,7 @@ import { MatInputModule } from '@angular/material/input';
 import { GatewaysComponent } from './gateways/gateways.component';
 import { ApiComponent } from './api/api.component';
 import { HealthComponent } from './health/health.component';
-import { NodesComponent } from './nodes/nodes.component';
 import { GatewayDetailComponent } from './gateways/gateway-detail/gateway-detail.component';
-import { NodeDetailComponent } from './nodes/node-detail/node-detail.component';
 import { TrafficModule } from './traffic/traffic.module';
 import { RankingComponent } from './ranking/ranking.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
@@ -49,7 +47,6 @@ import {MatDialogModule, MatDialogRef, MatDialog} from '@angular/material/dialog
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
-
 import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -76,9 +73,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     GatewaysComponent,
     ApiComponent,
     HealthComponent,
-    NodesComponent,
     GatewayDetailComponent,
-    NodeDetailComponent,
     RankingComponent,
     MonitoreosComponent,
     LoraComponent,
@@ -104,14 +99,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TrafficModule,
     ChartModule,
     MatToolbarModule,
-    MatTableModule,
     MatDialogModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
+
     }),
 
   ],

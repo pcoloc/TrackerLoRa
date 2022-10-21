@@ -8,6 +8,8 @@ import { MapComponent } from './dashboard-components/map/map.component';
 import { TrafficModule } from '../traffic/traffic.module';
 import { lora } from '../shared/lora';
 import { AddLocationComponent } from './dashboard-components/map/add-location/add-location.component';
+import {MatSelectModule} from '@angular/material/select'
+
 const routes: Routes = [
   {
     path: "",
@@ -25,7 +27,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes),
-    TrafficModule
+    TrafficModule,
+    MatSelectModule
   ],
   declarations: [
     DashboardComponent,

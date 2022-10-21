@@ -6,10 +6,33 @@
         <h4 class="card-title">Mapa</h4>
       </div>
       <div class="col-md-6">
-        <button mat-raised-button color="primary" (click)="openDialog()">New location</button>
+        <mat-form-field appearance="fill">
+          <mat-label>Gateway</mat-label>
+          <mat-select placeholder="Gateway" formControlName="gateways" (selectionChange)="onChangeGw($event.value)"  required>
+            <mat-option *ngFor="let gateway of gateways" [value]="gateway.value">
+              {{gateway.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>SpreadingFactor</mat-label>
+          <mat-select placeholder="SpreadingFactor" formControlName="spreadingFactors" (selectionChange)="onChangeSf($event.value)"  required>
+            <mat-option *ngFor="let spreadingFactor of spreadingFactors" [value]="spreadingFactor.value">
+              {{spreadingFactor.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Power</mat-label>
+          <mat-select placeholder="Power" formControlName="powers" (selectionChange)="onChangePw($event.value)"  required>
+            <mat-option *ngFor="let power of powers" [value]="power.value">
+              {{power.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
-      <h5 class="card-subtitle">Mapa de posicion de tus clientes y routers</h5>
+      <h5 class="card-subtitle">Mapa de posición de tus clientes y routers</h5>
       <div class="map-container">
         <div class="map-frame">
           <div id="map"></div>

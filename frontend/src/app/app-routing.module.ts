@@ -11,8 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { LoraComponent } from './lora/lora.component';
 import { MonitoreoDetailComponent } from './monitoreos/monitoreo-detail/monitoreo-detail.component';
 import { MonitoreosComponent } from './monitoreos/monitoreos.component';
-import { NodeDetailComponent } from './nodes/node-detail/node-detail.component';
-import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -41,12 +39,6 @@ export const Approutes: Routes = [
       },
       {
         path: 'gateways/:name', pathMatch: 'full', component: GatewayDetailComponent,  canActivate: [AuthGuard],  data: { title: 'Gateway Details - TrackerLoRa' }
-      },
-      {
-        path: 'nodes', pathMatch: 'full', component: NodesComponent,  canActivate: [AuthGuard],  data: { title: 'Nodes - TrackerLoRa' }
-      },
-      {
-        path: 'nodes/:name', pathMatch: 'full', component: NodeDetailComponent, canActivate: [AuthGuard],  data: { title: 'Node Details - TrackerLoRa' }
       },
       {
         path: 'relaciones', pathMatch: 'full', component: RelacionesComponent,  canActivate: [AuthGuard],  data: { title: 'Relaciones - TrackerLoRa' }

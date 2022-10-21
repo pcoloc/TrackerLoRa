@@ -18,7 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient, public router: Router, private toastr: ToastrService) {}
   // Register
   signUp(user: User): Observable<any> {
-    var formData: any = new FormData();
+    let formData: any = new FormData();
     formData.append('password', user.password);
     formData.append('user_name', user.user_name);
     formData.append('email', user.email);
@@ -31,7 +31,7 @@ export class AuthService {
   // Login
   signIn(user: User) {
     console.log(user);
-    var formData: any = new FormData();
+    let formData: any = new FormData();
     formData.append('password', user.password);
     formData.append('user_name', user.user_name);
     return this.http
@@ -55,9 +55,7 @@ export class AuthService {
     return authToken !== null ? true : false;
   }
   doLogout() {
-    let removeToken = localStorage.removeItem('token');
-    if (removeToken == null) {
-    }
+    localStorage.removeItem('token');
     this.router.navigate(['login']);
   }
   // User profile
@@ -90,8 +88,8 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
-  async getTtnMapper(): Promise<Observable<any>> {
-    let api = `${this.endpoint}/ttnMapperData/cleaned/dragino-pac/7/7`;
+  async getTtnMapper(gw, sf, pw): Promise<Observable<any>> {
+    let api = `${this.endpoint}/ttnMapperData/cleaned/${gw}/${sf}/${pw}`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
@@ -246,7 +244,6 @@ export class AuthService {
       console.log(msg);
     }
     console.log("Tenemos un error, apáñatelas como puedas");
-    //this.notifyService.showError("msg", "There are some errors");
     return throwError(() => msg);
   }
 

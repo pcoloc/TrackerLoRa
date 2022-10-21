@@ -8,18 +8,73 @@ export const DEFAULT_LAT = 36.834224508547145;
 export const DEFAULT_LON =  -2.4592578294686978;
 export const TITULO = 'Proyecto';
 
+interface Gateway {
+  value: string;
+  viewValue: string;
+}
+
+interface SpreadingFactor {
+  value: number;
+  viewValue: string;
+}
+
+interface Power {
+  value: number;
+  viewValue: string;
+}
+
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
+
+
+
 export class MapComponent  implements OnInit {
   //este es el mapa que se muestra en la vista
   private map:any;
   @Input() lat: number = DEFAULT_LAT;
   @Input() lon: number = DEFAULT_LON;
   @Input() titulo: string = TITULO ;
+  gw = 'dragino-pac';
+  sf = 7;
+  pw = 7;
+  gateways: Gateway[] = [
+    {value: 'dragino-pac', viewValue: 'Dragino'},
+    {value: 'paco96routermikro', viewValue: 'Mikrotik'},
+  ];
 
+  spreadingFactors: SpreadingFactor[] = [
+    {value: 7, viewValue: 'SF7'},
+    {value: 8, viewValue: 'SF8'},
+    {value: 9, viewValue: 'SF9'},
+    {value: 10, viewValue: 'SF10'},
+    {value: 11, viewValue: 'SF11'},
+    {value: 12, viewValue: 'SF12'},
+  ];
+
+  powers: Power[] = [
+    {value: 1, viewValue: '1mW'},
+    {value: 7, viewValue: '7mW'},
+    {value: 14, viewValue: '14mW'},
+  ];
+
+  onChangeGw(value) {
+      this.gw = value;
+      this.callMap();
+  }
+
+  onChangeSf(value){
+    this.sf = value;
+    this.callMap();
+  }
+
+  onChangePw(value) {
+    this.pw = value;
+    this.callMap();
+  }
 
   constructor(private mapService: LeafletService, private authservice: AuthService,  public dialog: MatDialog) {
   }
@@ -28,6 +83,10 @@ export class MapComponent  implements OnInit {
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
 
   async ngOnInit(): Promise<void> {
+    this.callMap();
+  }
+
+  async callMap(){
     if (this.mapService.L) {
       this.initMap();
       this.authservice.getGateways().subscribe(
@@ -55,7 +114,7 @@ export class MapComponent  implements OnInit {
         }
       );
 
-      (await this.authservice.getTtnMapper()).subscribe(
+      (await this.authservice.getTtnMapper(this.gateways, this.sf, this.pw)).subscribe(
         (data: any) => {
           console.log("paso")
           console.log(data)
@@ -74,7 +133,6 @@ export class MapComponent  implements OnInit {
       );
     }
   }
-
   //a function to get color based on the value of the node RSSI
   private getColor(rssi: number) {
     if(rssi < -120){
@@ -107,10 +165,10 @@ export class MapComponent  implements OnInit {
 
 
   private initMap(): void {
-    var iconRetinaUrl = 'assets/marker-router-icon-2x.png';
-    var iconUrl = 'assets/marker-router-icon-2x.png';
-    var shadowUrl = 'assets/marker-shadow.png';
-    var iconDefault: any;
+    let iconRetinaUrl = 'assets/marker-router-icon-2x.png';
+    let iconUrl = 'assets/marker-router-icon-2x.png';
+    let shadowUrl = 'assets/marker-shadow.png';
+    let iconDefault: any;
     iconDefault = this.mapService.L.icon({
       iconRetinaUrl,
       iconUrl,

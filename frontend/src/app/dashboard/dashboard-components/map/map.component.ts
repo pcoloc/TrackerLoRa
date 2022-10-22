@@ -62,20 +62,24 @@ export class MapComponent  implements OnInit {
   ];
 
   onChangeGw(value) {
+    this.map = [];
+    this.map = this.getMap();
       this.gw = value;
       this.mapService.L.clearLayers();
       this.callMap();
   }
 
   onChangeSf(value){
+    this.map = [];
+    this.map = this.getMap();
     this.sf = value;
-    this.mapService.L.clearLayers();
     this.callMap();
   }
 
   onChangePw(value) {
+    this.map = [];
+    this.map = this.getMap();
     this.pw = value;
-    this.mapService.L.clearLayers();
     this.callMap();
   }
 
@@ -123,7 +127,7 @@ export class MapComponent  implements OnInit {
   }
 
   async getUbis(){
-    (await this.authservice.getTtnMapper(this.gw, this.sf, this.pw)).subscribe(
+    (await this.authservice.getTtnMapper(this.gw || 'dragino-pac', this.sf || 7, this.pw || 7)).subscribe(
       (data: any) => {
         console.log("paso")
 
@@ -189,16 +193,13 @@ export class MapComponent  implements OnInit {
     });
     this.mapService.L.Marker.prototype.options.icon = iconDefault;
 
-    this.map =  this.mapService.L.map('map', {
-      center: [this.lat, this.lon],
-      attributionControl: false,
-      zoom: 14
-    });
+    this.getMap();
 
     const tiles = this.mapService.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: 'miau'
     });
+
 
     //  for(let router of this.gateway){
     //   let service = this.mapService.L;
@@ -208,12 +209,12 @@ export class MapComponent  implements OnInit {
     // }
     //From documentation http://leafletjs.com/reference.html#polyline
     // create a red polyline from an arrays of LatLng points
-    for (let relation of relations){
-      let line = this.mapService.L.polyline([[relation.latitude_emisor, relation.longitude_emisor], [relation.latitude_receptor, relation.longitude_receptor]], {color: relation.color});
-      line.addTo(this.map);
-      // zoom the map to the polyline
-      //this.map.fitBounds(line.getBounds());
-    }
+    // for (let relation of relations){
+    //   let line = this.mapService.L.polyline([[relation.latitude_emisor, relation.longitude_emisor], [relation.latitude_receptor, relation.longitude_receptor]], {color: relation.color});
+    //   line.addTo(this.map);
+    //   // zoom the map to the polyline
+    //   //this.map.fitBounds(line.getBounds());
+    //}
     tiles.addTo(this.map);
 
 // var latlngs = Array();
@@ -224,6 +225,14 @@ export class MapComponent  implements OnInit {
 // //Get latlng from first marker
 // latlngs.push(mark2.getLatLng());
    }
+
+   private getMap(){
+    this.map =  this.mapService.L.map('map', {
+      center: [this.lat, this.lon],
+      attributionControl: false,
+      zoom: 14
+    });
+  }
 
    openDialog(): void {
     const dialogRef = this.dialog.open(AddLocationComponent, {

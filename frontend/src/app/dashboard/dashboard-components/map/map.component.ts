@@ -63,23 +63,20 @@ export class MapComponent  implements OnInit {
 
   onChangeGw(value) {
     this.gw = value;
-    this.map.off();
-    this.map.remove();
-    this.callMap();
+    this.map.invalidateSize();
+    this.getUbis();
   }
 
   onChangeSf(value){
     this.sf = value;
-    this.map.off();
-    this.map.remove();
-    this.callMap();
+    this.map.invalidateSize();
+    this.getUbis();
   }
 
   onChangePw(value) {
     this.pw = value;
-    this.map.off();
-    this.map.remove();
-    this.callMap();
+    this.map.invalidateSize();
+    this.getUbis();
   }
 
   constructor(private mapService: LeafletService, private authservice: AuthService,  public dialog: MatDialog) {
@@ -159,7 +156,7 @@ export class MapComponent  implements OnInit {
     } else if (rssi < -80) {
       return '#00CEFF';
     } else if (rssi < -70) {
-      return '#00E9FF';
+      return '#1EFF00';
     } else if (rssi < -60) {
       return '#00FFFF';
     } else if (rssi < -50) {

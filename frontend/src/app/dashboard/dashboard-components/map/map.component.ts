@@ -62,23 +62,23 @@ export class MapComponent  implements OnInit {
   ];
 
   onChangeGw(value) {
-    this.map = [];
-    this.map = this.getMap();
-      this.gw = value;
-      this.callMap();
+    this.gw = value;
+    this.map.off();
+    this.map.remove();
+    this.callMap();
   }
 
   onChangeSf(value){
-    this.map = [];
-    this.map = this.getMap();
     this.sf = value;
+    this.map.off();
+    this.map.remove();
     this.callMap();
   }
 
   onChangePw(value) {
-    this.map = [];
-    this.map = this.getMap();
     this.pw = value;
+    this.map.off();
+    this.map.remove();
     this.callMap();
   }
 
@@ -118,6 +118,7 @@ export class MapComponent  implements OnInit {
               let marker = !node.router ? service.marker([latitud, longitud]) : service.circleMarker([latitud, longitud]);
               marker.bindPopup("<b>" + node.name + "</b><br>" + "<b>" + node.description + "</b><br> <b>Last Ubi: </b>" + node.lastLocation.date);
               marker.addTo(this.map);
+              marker.removeItem(this.map);
           }
         }
       );
@@ -147,24 +148,24 @@ export class MapComponent  implements OnInit {
   //a function to get color based on the value of the node RSSI
   private getColor(rssi: number) {
     if(rssi < -120){
-      return '#f23d30';
+      return '#FF0F00';
     }
     else if (rssi < -110) {
-      return '#f00722';
+      return '#FF7400';
     }else if (rssi < -100) {
-        return '#0000ff';
+        return '#FFAD00';
     } else if (rssi < -90) {
-        return '#d62060';
+        return '#009EFF';
     } else if (rssi < -80) {
-      return '#276670';
+      return '#00CEFF';
     } else if (rssi < -70) {
-      return '#15abc2';
+      return '#00E9FF';
     } else if (rssi < -60) {
-      return '#196122';
+      return '#00FFFF';
     } else if (rssi < -50) {
-      return '#0fa821';
+      return '#00FFE1';
     } else if (rssi < 0) {
-      return '#12ff2e';
+      return '#1EFF00';
     }
     return '#ff0000';
   }

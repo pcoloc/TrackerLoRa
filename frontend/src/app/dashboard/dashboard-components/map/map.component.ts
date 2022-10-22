@@ -65,7 +65,6 @@ export class MapComponent  implements OnInit {
     this.map = [];
     this.map = this.getMap();
       this.gw = value;
-      this.mapService.L.clearLayers();
       this.callMap();
   }
 

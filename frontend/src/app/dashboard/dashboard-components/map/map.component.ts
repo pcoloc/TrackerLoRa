@@ -41,6 +41,7 @@ export class MapComponent  implements OnInit {
   gw = 'dragino-pac';
   sf = 7;
   pw = 7;
+  counter = 0;
   gateways: Gateway[] = [
     {value: 'dragino-pac', viewValue: 'Dragino'},
     {value: 'paco96routermikro', viewValue: 'Mikrotik'},
@@ -48,11 +49,7 @@ export class MapComponent  implements OnInit {
 
   spreadingFactors: SpreadingFactor[] = [
     {value: 7, viewValue: 'SF7'},
-    {value: 8, viewValue: 'SF8'},
     {value: 9, viewValue: 'SF9'},
-    {value: 10, viewValue: 'SF10'},
-    {value: 11, viewValue: 'SF11'},
-    {value: 12, viewValue: 'SF12'},
   ];
 
   powers: Power[] = [
@@ -136,6 +133,7 @@ export class MapComponent  implements OnInit {
             marker.setStyle({color: color});
             marker.bindPopup("<b>Gateway: </b>" + ttn.gateway_1?.name + "</b><br> <b>Cliente: </b>" + ttn?.cliente + "</b><br> <b>RX: </b>" + ttn?.potencia + "dBm</b><br> <b>RSSI: </b>" + ttn?.gateway_1.rssi + "dB</b><br> <b>SNR: </b>" + ttn.gateway_1?.snr + "dB</b><br> <b>spreading_factor: </b>" + ttn?.sf + "<br> <b>Metros: </b>" + ttn?.gateway_1.metros);
             marker.addTo(this.map);
+            this.counter ++;
         }
       }
     );

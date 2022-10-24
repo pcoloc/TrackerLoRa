@@ -157,7 +157,7 @@ export class MapComponent  implements OnInit {
     } else if (rssi < -70) {
       return '#521a64';
     } else if (rssi < -60) {
-      return '#d1123f';
+      return '#3f1821';
     } else if (rssi < -50) {
       return '#2b1133';
     } else if (rssi < 0) {

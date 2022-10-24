@@ -141,22 +141,25 @@ export class MapComponent  implements OnInit {
   //a function to get color based on the value of the node RSSI
   private getColor(rssi: number) {
     if(rssi < -120){
+      return '#0000ff';
+    }else if (rssi < -115) {
       return '#03ffff';
-    }
-    else if (rssi < -110) {
+    }else if (rssi < -110) {
+      return '#03ff00';
+    }else if (rssi < -105) {
       return '#ffff00';
     }else if (rssi < -100) {
         return '#ff7f00';
     } else if (rssi < -90) {
         return '#ff0000';
     } else if (rssi < -80) {
-      return '#ff0000';
+      return '#8d1bb1';
     } else if (rssi < -70) {
-      return '#ff0000';
+      return '#521a64';
     } else if (rssi < -60) {
       return '#d1123f';
     } else if (rssi < -50) {
-      return '#830623';
+      return '#2b1133';
     } else if (rssi < 0) {
       return '#830623';
     }

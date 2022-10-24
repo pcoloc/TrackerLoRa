@@ -63,20 +63,18 @@ export class MapComponent  implements OnInit {
 
   onChangeGw(value) {
     this.gw = value;
-    this.map.invalidateSize();
-    this.getUbis();
   }
 
   onChangeSf(value){
     this.sf = value;
-    this.map.invalidateSize();
-    this.getUbis();
   }
 
   onChangePw(value) {
     this.pw = value;
-    this.map.invalidateSize();
-    this.getUbis();
+    if (this.mapService.L) {
+      this.initMap();
+      this.callMap();
+    }
   }
 
   constructor(private mapService: LeafletService, private authservice: AuthService,  public dialog: MatDialog) {
@@ -86,10 +84,10 @@ export class MapComponent  implements OnInit {
   //https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
 
   async ngOnInit(): Promise<void> {
-    if (this.mapService.L) {
-      this.initMap();
-      this.callMap();
-    }
+    // if (this.mapService.L) {
+    //   this.initMap();
+    //   this.callMap();
+    // }
   }
 
   async callMap(){
@@ -124,7 +122,7 @@ export class MapComponent  implements OnInit {
   }
 
   async getUbis(){
-    (await this.authservice.getTtnMapper(this.gw || 'dragino-pac', this.sf || 7, this.pw || 7)).subscribe(
+    (await this.authservice.getTtnMapper(this.gw, this.sf, this.pw)).subscribe(
       (data: any) => {
         console.log("paso")
 

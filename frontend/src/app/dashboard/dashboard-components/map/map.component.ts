@@ -141,26 +141,26 @@ export class MapComponent  implements OnInit {
   //a function to get color based on the value of the node RSSI
   private getColor(rssi: number) {
     if(rssi < -120){
-      return '#FF0F00';
+      return '#03ffff';
     }
     else if (rssi < -110) {
-      return '#FF7400';
+      return '#ffff00';
     }else if (rssi < -100) {
-        return '#FFAD00';
+        return '#ff7f00';
     } else if (rssi < -90) {
-        return '#009EFF';
+        return '#ff0000';
     } else if (rssi < -80) {
-      return '#00CEFF';
+      return '#ff0000';
     } else if (rssi < -70) {
-      return '#1EFF00';
+      return '#ff0000';
     } else if (rssi < -60) {
-      return '#00FFFF';
+      return '#d1123f';
     } else if (rssi < -50) {
-      return '#00FFE1';
+      return '#830623';
     } else if (rssi < 0) {
-      return '#1EFF00';
+      return '#830623';
     }
-    return '#ff0000';
+    return '#0000ff';
   }
 //   function onMapClick(e) {
 //     alert("You clicked the map at " + e.latlng);

@@ -2,42 +2,57 @@
   <div class="card-body">
     <div class="row">
       <!-- column for card-title of 6, and column for button new dialog of 6 too-->
-      <div class="col-md-6">
-        <h4 class="card-title">Mapa</h4>
-      </div>
-      <div class="col-md-6">
-        <mat-form-field appearance="fill">
-          <mat-label>Gateway</mat-label>
-          <mat-select [(value)]="gateways[0].value" placeholder="Gateway" formControlName="gateways" (selectionChange)="onChangeGw($event.value)"  required>
-            <mat-option *ngFor="let gateway of gateways" [value]="gateway.value">
-              {{gateway.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>SpreadingFactor</mat-label>
-          <mat-select [(value)]="spreadingFactors[0].value" placeholder="SpreadingFactor" formControlName="spreadingFactors" (selectionChange)="onChangeSf($event.value)"  required>
-            <mat-option *ngFor="let spreadingFactor of spreadingFactors" [value]="spreadingFactor.value">
-              {{spreadingFactor.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Power</mat-label>
-          <mat-select [(value)]="powers[0].value" placeholder="Power" formControlName="powers" (selectionChange)="onChangePw($event.value)"  required>
-            <mat-option *ngFor="let power of powers" [value]="power.value">
-              {{power.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <h5 class="card-subtitle">Número de registros: {{counter}}</h5>
+        <div class="col-md-3">
+          <h4 class="card-title">Mapa</h4>
+        </div>
+        <div class="col-md-9">
+          <mat-form-field appearance="fill">
+            <mat-label>Gateway</mat-label>
+            <mat-select [(value)]="gateways[0].value" placeholder="Gateway" formControlName="gateways" (selectionChange)="onChangeGw($event.value)"  required>
+              <mat-option *ngFor="let gateway of gateways" [value]="gateway.value">
+                {{gateway.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>SpreadingFactor</mat-label>
+            <mat-select [(value)]="spreadingFactors[0].value" placeholder="SpreadingFactor" formControlName="spreadingFactors" (selectionChange)="onChangeSf($event.value)"  required>
+              <mat-option *ngFor="let spreadingFactor of spreadingFactors" [value]="spreadingFactor.value">
+                {{spreadingFactor.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Power</mat-label>
+            <mat-select [(value)]="powers[0].value" placeholder="Power" formControlName="powers" (selectionChange)="onChangePw($event.value)"  required>
+              <mat-option *ngFor="let power of powers" [value]="power.value">
+                {{power.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <h5 class="card-subtitle">Número de registros: {{counter}}</h5>
     </div>
-      <h5 class="card-subtitle">Mapa de posición de tus clientes y routers</h5>
-      <div class="map-container">
-        <div class="map-frame">
-          <div id="map"></div>
+    <div class="row">
+      <div class="col-md-3">
+        <h5 class="card-subtitle">Mapa de posición de tus clientes y routers</h5>
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
+      <div class="col-md-9">
+        <button mat-button href="https://www.google.com/" target="_blank">
+          Descargar Datos CSV
+        </button>
+        <button mat-button href="https://backend.lopezcarrillo.com/ttnMapperData/csv" target="_blank">
+          Descargar TODO CSV
+        </button>
+        <button mat-button href="https://www.google.com/" target="_blank">
+          Descargar Router CSV
+        </button>
+      </div>
+    </div>
   </div>
 </div>

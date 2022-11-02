@@ -9,6 +9,7 @@ import { TrafficModule } from '../traffic/traffic.module';
 import { lora } from '../shared/lora';
 import { AddLocationComponent } from './dashboard-components/map/add-location/add-location.component';
 import {MatSelectModule} from '@angular/material/select'
+import { MatButton, MatButtonModule } from "@angular/material/button";
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     TrafficModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   declarations: [
     DashboardComponent,

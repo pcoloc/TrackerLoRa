@@ -68,7 +68,6 @@ export class MapComponent  implements OnInit {
 
   onChangePw(value) {
     this.pw = value;
-    this.map.redraw();
     if (this.mapService.L) {
       this.initMap();
       this.callMap();
